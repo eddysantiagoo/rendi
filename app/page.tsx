@@ -31,6 +31,7 @@ import {
 } from "@/components/ui/select";
 import { Link } from "lucide-react";
 import { Faq } from "./_components/core/Faq";
+import { Footer } from "./_components/core/Footer";
 
 export default function Home() {
   const [amount, setAmount] = useState("1000000");
@@ -118,7 +119,7 @@ export default function Home() {
 
       <div className="rounded-xl gap-4 grid place-items-center w-full">
         <h1 className="w-fit px-4 py-2 rounded-lg text-[#00d992] text-5xl font-bold">
-          Calcula los rendimientos
+          Calcula tus rendimientos
         </h1>
         <p className="font-medium text-md  px-4 py-2 rounded-full">
           En esta calculadora podras aproximar tus rendimientos con las
@@ -294,6 +295,8 @@ export default function Home() {
       <section className="p-6 px-28 w-full md:w-[70%]">
         <Faq />
       </section>
+
+      <Footer />
     </div>
   );
 }
