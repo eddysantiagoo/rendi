@@ -16,7 +16,6 @@ import { CarouselBanks } from "./_components/core/CarrouselBanks";
 
 export default function Home() {
   const [amount, setAmount] = useState("");
-  const [isPlaying, setIsPlaying] = useState(false)
   const [months, setMonths] = useState("");
 
   // Formatear valores en COP
