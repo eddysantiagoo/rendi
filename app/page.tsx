@@ -97,6 +97,16 @@ export default function Home() {
     <div className="place-content-center place-items-center space-y-12">
       <Header />
 
+      <div className="rounded-xl gap-4 grid place-items-center w-full">
+        <h1 className="bg-[#122322] w-fit px-4 py-2 rounded-lg text-[#00d992] text-4xl font-bold">
+          Calcula los rendimientos
+        </h1>
+        <p className="font-medium text-sm">
+          En esta calculadora podras aproximar tus rendimientos con las
+          diferentes cuentas de ahorra en Colombia.
+        </p>
+      </div>
+
       <section className="">
         <CarouselBanks />
 
@@ -106,8 +116,9 @@ export default function Home() {
         </span>
       </section>
 
-      <section className="grid grid-cols-2 w-full my-12 mt-44">
+      <section className="grid grid-cols-2 w-full px-28 ">
         {/* Inputs */}
+
         <div className="bg-neutral-900 flex flex-col p-12 gap-4 rounded-2xl">
           <label className="text-white text-sm font-medium">Amount (COP)</label>
           <input
