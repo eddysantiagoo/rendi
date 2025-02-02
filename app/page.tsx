@@ -11,6 +11,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import CurrencyInput from "react-currency-input-field";
 import Banks from "./_DATA/Banks";
 import { CarouselBanks } from "./_components/core/CarrouselBanks";
 import DialogEa from "./_components/core/DialogEa";
@@ -121,11 +122,11 @@ export default function Home() {
 
         <div className="bg-neutral-900 flex flex-col p-12 gap-4 rounded-2xl">
           <label className="text-white text-sm font-medium">Amount (COP)</label>
-          <input
-            type="number"
-            placeholder="Ingrese monto en COP"
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
+          <CurrencyInput
+            autoFocus
+            prefix="$"
+            onValueChange={(value) => setAmount(value ?? "")}
+            intlConfig={{ locale: "es-CO", currency: "COP" }}
             className="w-full p-3 rounded-lg bg-neutral-800 text-white border border-neutral-700 focus:ring-2 focus:ring-blue-500 outline-none"
           />
 
