@@ -116,7 +116,7 @@ export default function Home() {
         </h1>
         <p className="font-medium text-md bg-[#122322] px-4 py-2 rounded-full">
           En esta calculadora podras aproximar tus rendimientos con las
-          diferentes cuentas de ahorra en Colombia.
+          diferentes cuentas de ahorro en Colombia.
         </p>
       </div>
 
