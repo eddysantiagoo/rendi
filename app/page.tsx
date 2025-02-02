@@ -11,6 +11,10 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import { Press_Start_2P } from "next/font/google"; // Load a pixelated font
+
+const pixelFont = Press_Start_2P({ subsets: ["latin"], weight: "400" });
+
 import CurrencyInput from "react-currency-input-field";
 import Banks from "./_DATA/Banks";
 import { CarouselBanks } from "./_components/core/CarrouselBanks";
@@ -25,6 +29,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Link } from "lucide-react";
+import { Faq } from "./_components/core/Faq";
 
 export default function Home() {
   const [amount, setAmount] = useState("1000000");
@@ -270,28 +276,23 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="p-6">
-        <h2 className="text-2xl font-bold mb-4">Bento Grid</h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {Banks.map((bank, index) => (
-            <div
-              key={index}
-              className="bg-[#0a0a0a] border-[1px] border-neutral-800 p-4 flex flex-col items-center justify-between rounded-lg"
-            >
-              <Image
-                src={bank.image}
-                alt={bank.name}
-                width={50}
-                height={50}
-                className="rounded-lg mb-4"
-              />
-              <h3 className="text-white text-lg font-medium mb-2">
-                {bank.name}
-              </h3>
-              <p className="text-[#00d992] font-bold">{bank.tasaEA}%</p>
-            </div>
-          ))}
+      <section className="p-6 px-28 w-full flex place-content-center">
+        <div className="relative flex items-center gap-6 p-4">
+          <div className="bg-[#0a0a0a] border-4relative">
+            <Image src="/eddy.png" alt="Character" width={100} height={150} />
+          </div>
+
+          <div
+            className={`${pixelFont.className} relative bg-[#fef4e8] text-black p-4 text-sm max-w-xs border-4 border-black pixel-border`}
+          >
+            "guarda tus monedas! 💰"
+            <div className="absolute -left-4 bottom-4 w-6 h-6 bg-[#fef4e8] border-black border-l-4 border-b-4"></div>
+          </div>
         </div>
+      </section>
+
+      <section className="p-6 px-28 w-full">
+        <Faq />
       </section>
     </div>
   );
