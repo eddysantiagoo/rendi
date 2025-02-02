@@ -47,7 +47,7 @@ export default function Home() {
 
   // Calcular retención en la fuente para Nubank
   const calculateRetention = (interests: number, months: number) => {
-    const dailyThreshold = 2588.58; // Límite diario en COP
+    const dailyThreshold = 2588.58; // Umbral diario de retención
     const monthlyThreshold = dailyThreshold * 30; // Aproximado a 30 días
 
     // Solo se aplica retención si los intereses superan el umbral mensual
@@ -135,10 +135,10 @@ export default function Home() {
         </span>
       </section>
 
-      <section className="grid md:grid-cols-2 w-full px-4 md:px-28 mb-12">
+      <section className="grid md:flex w-full px-10 xl:px-28 mb-12">
         {/* Inputs */}
 
-        <div className="bg-neutral-900 flex flex-col p-12 gap-6 rounded-2xl w-full place-content-center">
+        <div className="bg-neutral-900 flex flex-col p-12 gap-6 rounded-2xl md:w-1/2 place-content-center">
           <Image
             className="mx-auto"
             src="/logo.png"
@@ -193,7 +193,7 @@ export default function Home() {
         </div>
 
         {/* Resultados */}
-        <div className="p-6 border border-neutral-900 rounded-2xl">
+        <div className="p-6 border border-neutral-900 rounded-2xl w-full">
           <div className="py-4 flex flex-col gap-4">
             <h1 className="text-center  text-2xl font-bold">Resultados</h1>
             <div className="flex gap-4">
@@ -241,7 +241,7 @@ export default function Home() {
                               bank.retention.replace(/[^0-9.-]+/g, "")
                             ) > 1 && (
                               <span className="text-red-400 text-sm">
-                                (Se aplica RTE FTE: {bank.retention})
+                                (Se aplica RTE FTE: -{bank.retention})
                               </span>
                             )}
                           </div>
@@ -291,7 +291,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="p-6 px-28 w-full">
+      <section className="p-6 px-28 w-full md:w-[70%]">
         <Faq />
       </section>
     </div>

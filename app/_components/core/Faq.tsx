@@ -18,26 +18,9 @@ const items = [
   {
     id: "2",
     icon: Bell,
-    title: "Notifications",
-    sub: "Customize your notification preferences",
+    title: "¿Cuando se aplica la RTE FTE?",
     content:
-      "Choose which updates you want to receive. You can get notifications for: security alerts, billing updates, newsletter and product announcements, usage reports, and scheduled maintenance. Notifications can be delivered via email, SMS, or push notifications on your devices.",
-  },
-  {
-    id: "3",
-    icon: ShieldCheck,
-    title: "2-step verification",
-    sub: "Add an extra layer of security to your account",
-    content:
-      "Protect your account with two-factor authentication. You can use authenticator apps like Google Authenticator or Authy, receive SMS codes, or use security keys like YubiKey. We recommend using an authenticator app for the most secure experience.",
-  },
-  {
-    id: "4",
-    icon: LifeBuoy,
-    title: "Contact support",
-    sub: "We're here to help 24/7",
-    content:
-      "Our support team is available around the clock to assist you. For billing inquiries, technical issues, or general questions, you can reach us through live chat, email at support@example.com, or schedule a call with our technical team. Premium support is available for enterprise customers.",
+      "Para las cuentas de ahorro, se aplica un porcentaje de retención en la fuente del 7% sobre los rendimientos que se generen; Para el año 2024 se aplica retención si los intereses generados superan el umbral diario de $2.588,88 COP.",
   },
 ];
 
@@ -45,7 +28,7 @@ export const Faq = () => {
   return (
     <div className="space-y-4">
       <h2 className="text-xl font-bold">Preguntas frecuentes</h2>
-      <Accordion type="single" collapsible className="w-full" defaultValue="3">
+      <Accordion type="single" collapsible className="w-full" defaultValue="1">
         {items.map((item) => (
           <AccordionItem value={item.id} key={item.id} className="py-2">
             <AccordionPrimitive.Header className="flex">
@@ -63,9 +46,6 @@ export const Faq = () => {
                   </span>
                   <span className="flex flex-col space-y-1">
                     <span>{item.title}</span>
-                    {item.sub && (
-                      <span className="text-sm font-normal">{item.sub}</span>
-                    )}
                   </span>
                 </span>
                 <ChevronDown
