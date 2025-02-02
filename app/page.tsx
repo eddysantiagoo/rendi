@@ -16,10 +16,19 @@ import Banks from "./_DATA/Banks";
 import { CarouselBanks } from "./_components/core/CarrouselBanks";
 import DialogEa from "./_components/core/DialogEa";
 import { Header } from "./_components/core/Header";
+import Image from "next/image";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export default function Home() {
-  const [amount, setAmount] = useState("");
-  const [months, setMonths] = useState("");
+  const [amount, setAmount] = useState("1000000");
+  const [months, setMonths] = useState("1");
 
   // Formatear valores en COP
   const formatCurrency = (value: number) => {
@@ -63,6 +72,7 @@ export default function Home() {
         deposit: formatCurrency(P),
         finalAmount: formatCurrency(finalAmount),
         interests: formatCurrency(interests),
+        interestsRaw: interests,
         retention: formatCurrency(retention),
       };
     });
@@ -94,15 +104,17 @@ export default function Home() {
     return growthData;
   };
 
+  const isFormFilled = amount && months;
+
   return (
     <div className="place-content-center place-items-center space-y-12">
       <Header />
 
       <div className="rounded-xl gap-4 grid place-items-center w-full">
-        <h1 className="bg-[#122322] w-fit px-4 py-2 rounded-lg text-[#00d992] text-4xl font-bold">
+        <h1 className="w-fit px-4 py-2 rounded-lg text-[#00d992] text-5xl font-bold">
           Calcula los rendimientos
         </h1>
-        <p className="font-medium text-sm">
+        <p className="font-medium text-md bg-[#122322] px-4 py-2 rounded-full">
           En esta calculadora podras aproximar tus rendimientos con las
           diferentes cuentas de ahorra en Colombia.
         </p>
@@ -117,54 +129,168 @@ export default function Home() {
         </span>
       </section>
 
-      <section className="grid grid-cols-2 w-full px-28 ">
+      <section className="grid grid-cols-2 w-full px-28 mb-12">
         {/* Inputs */}
 
-        <div className="bg-neutral-900 flex flex-col p-12 gap-4 rounded-2xl">
-          <label className="text-white text-sm font-medium">Amount (COP)</label>
+        <div className="bg-neutral-900 flex flex-col p-12 gap-6 rounded-2xl w-full place-content-center">
+          <Image
+            className="mx-auto"
+            src="/logo.png"
+            alt="Logo"
+            width={200}
+            height={150}
+          />
+
+          <label className="text-white text-xl font-medium text-left">
+            Valor
+          </label>
           <CurrencyInput
             autoFocus
             prefix="$"
+            placeholder=""
+            value={amount}
             onValueChange={(value) => setAmount(value ?? "")}
             intlConfig={{ locale: "es-CO", currency: "COP" }}
-            className="w-full p-3 rounded-lg bg-neutral-800 text-white border border-neutral-700 focus:ring-2 focus:ring-blue-500 outline-none"
+            className="w-full p-6 rounded-lg bg-[#090d10] font-bold text-white focus:ring-2 focus:ring-blue-500 outline-none text-xl"
           />
 
-          <label className="text-white text-sm font-medium">Months</label>
-          <input
-            type="number"
-            placeholder="Ingrese número de meses"
-            value={months}
-            onChange={(e) => setMonths(e.target.value)}
-            className="w-full p-3 rounded-lg bg-neutral-800 text-white border border-neutral-700 focus:ring-2 focus:ring-blue-500 outline-none"
-          />
+          <div className="space-y-4 w-full">
+            <Label htmlFor={months} className="text-xl">
+              Meses <span className="text-destructive">*</span>
+            </Label>
+            <Select
+              onValueChange={(value) => setMonths(value)}
+              defaultValue="1"
+            >
+              <SelectTrigger
+                id={months}
+                className="w-full py-10 px-6 font-bold text-xl"
+              >
+                <SelectValue placeholder="Meses" />
+              </SelectTrigger>
+              <SelectContent className="text-xl">
+                <SelectItem value="1">1 mes</SelectItem>
+                <SelectItem value="2">2 meses</SelectItem>
+                <SelectItem value="3">3 meses</SelectItem>
+                <SelectItem value="4">4 meses</SelectItem>
+                <SelectItem value="5">5 meses</SelectItem>
+                <SelectItem value="6">6 meses</SelectItem>
+                <SelectItem value="7">7 meses</SelectItem>
+                <SelectItem value="8">8 meses</SelectItem>
+                <SelectItem value="9">9 meses</SelectItem>
+                <SelectItem value="10">10 meses</SelectItem>
+                <SelectItem value="11">11 meses</SelectItem>
+                <SelectItem value="12">12 meses</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
         </div>
 
         {/* Resultados */}
         <div className="p-6 border border-neutral-900 rounded-2xl">
-          <h1 className="text-center text-2xl font-bold">Resultados</h1>
-
-          <div className="p-6">
-            {calculateReturns().map((bank, index) => (
-              <div key={index} className="bg-neutral-800 p-4 rounded-lg mb-4">
-                <h2 className="text-white font-bold">{bank.name}</h2>
-                <p className="text-blue-400">
-                  💰 Habrías depositado: <strong>{bank.deposit}</strong>
-                </p>
-                <p className="text-green-400">
-                  📈 En {months} mes(es) tendrías:{" "}
-                  <strong>{bank.finalAmount}</strong>
-                </p>
-                <p className="text-yellow-400">
-                  💸 Tu dinero habría crecido: <strong>{bank.interests}</strong>
-                </p>
-                <p className="text-red-400">
-                  🔻 Total retención en la fuente:{" "}
-                  <strong>{bank.retention}</strong>
-                </p>
+          <div className="py-4 flex flex-col gap-4">
+            <h1 className="text-center  text-2xl font-bold">Resultados</h1>
+            <div className="flex gap-4">
+              <div className="flex-grow flex px-4 py-2 gap-2 flex-col bg-[#122322] text-[#00d992] rounded-md hover:opacity-70 transition-all hover:scale-105">
+                <h3 className="font-medium">Deposito</h3>
+                <span className="font-semibold">{formatCurrency(amount)}</span>
               </div>
-            ))}
+              <div className="flex-grow flex px-4 py-2 gap-2 flex-col bg-[#122322] text-[#00d992] rounded-md hover:opacity-70 transition-all hover:scale-105">
+                <h3 className="font-medium">Meses</h3>
+                <span className="font-semibold">
+                  {`${months || "0"} mes(es)`}{" "}
+                </span>
+              </div>
+            </div>
           </div>
+
+          <div className=" max-h-[500px] overflow-y-auto">
+            {isFormFilled ? (
+              calculateReturns()
+                .sort((a, b) => (b.interestsRaw || 0) - (a.interestsRaw || 0)) // Sorting based on raw 'interests' value
+                .map((bank, index) => (
+                  <div
+                    key={index}
+                    className="bg-[#0a0a0a] border-[1px] border-neutral-800 p-4 flex items-center justify-between rounded-lg mb-4 resultShowItem"
+                  >
+                    <article>
+                      <div className="flex gap-4 items-center">
+                        <Image
+                          src={bank.image}
+                          alt={bank.name}
+                          width={50}
+                          height={50}
+                          className="rounded-lg"
+                        />
+                        <div className="flex flex-col">
+                          <h2 className="text-white text-lg font-medium">
+                            {bank.name}
+                          </h2>
+                          <div className="flex gap-2 items-center">
+                            <span className="text-xl text-[#00d992] font-bold">
+                              {bank.finalAmount}
+                            </span>
+
+                            {parseFloat(
+                              bank.retention.replace(/[^0-9.-]+/g, "")
+                            ) > 1 && (
+                              <span className="text-red-400 text-sm">
+                                (Se aplica RTE FTE: {bank.retention})
+                              </span>
+                            )}
+                          </div>
+                          <p className="text-yellow-400">
+                            Tu dinero habría crecido: {bank.interests}
+                          </p>
+                        </div>
+                      </div>
+                    </article>
+
+                    <article className="bg-[#122322] text-[#00d992] px-4 py-2 rounded-md text-sm font-bold z-10">
+                      {bank.tasaEA}%
+                    </article>
+                  </div>
+                ))
+            ) : (
+              <div className="text-center text-gray-500">
+                Ingresa un monto y número de meses para calcular los
+                rendimientos
+                <div className="mt-4 flex justify-center items-center p-4 rounded-lg">
+                  <Image
+                    className="bg-neutral-900 rounded-full p-4 hover:scale-110 transition-all"
+                    src="/money-bag.png"
+                    alt="Empty"
+                    width={100}
+                    height={200}
+                  />
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
+      <section className="p-6">
+        <h2 className="text-2xl font-bold mb-4">Bento Grid</h2>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {Banks.map((bank, index) => (
+            <div
+              key={index}
+              className="bg-[#0a0a0a] border-[1px] border-neutral-800 p-4 flex flex-col items-center justify-between rounded-lg"
+            >
+              <Image
+                src={bank.image}
+                alt={bank.name}
+                width={50}
+                height={50}
+                className="rounded-lg mb-4"
+              />
+              <h3 className="text-white text-lg font-medium mb-2">
+                {bank.name}
+              </h3>
+              <p className="text-[#00d992] font-bold">{bank.tasaEA}%</p>
+            </div>
+          ))}
         </div>
       </section>
     </div>

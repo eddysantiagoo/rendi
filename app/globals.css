@@ -64,3 +64,23 @@
     @apply bg-background text-foreground;
   }
 }
+
+.resultShowItem {
+  animation: show-popup 0.4s cubic-bezier(0.98, 0.5, 0.83, 1.12);
+}
+
+@keyframes show-popup {
+  0% {
+    transform: scale(0.99);
+    opacity: 0;
+  }
+
+  55% {
+    transform: scale(1.01);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
