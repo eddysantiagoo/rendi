@@ -13,6 +13,8 @@ import {
 } from "recharts";
 import Banks from "./_DATA/Banks";
 import { CarouselBanks } from "./_components/core/CarrouselBanks";
+import DialogEa from "./_components/core/DialogEa";
+import { Header } from "./_components/core/Header";
 
 export default function Home() {
   const [amount, setAmount] = useState("");
@@ -92,15 +94,19 @@ export default function Home() {
   };
 
   return (
-    <div className="place-content-center place-items-center px-48">
-      <h1 className="text-2xl bg-[#122322] text-[#00d992] py-2 px-6 my-2 rounded-md font-bold">
-        Calcula los rendimientos
-      </h1>
-      <p>Para tus cuentas de ahorro</p>
+    <div className="place-content-center place-items-center space-y-12">
+      <Header />
 
-      <CarouselBanks />
+      <section className="">
+        <CarouselBanks />
 
-      <section className="grid grid-cols-2 w-full my-12">
+        <DialogEa />
+        <span className="text-sm float-right mr-1">
+          Todas las tasas mostradas son en efectivo anual,{" "}
+        </span>
+      </section>
+
+      <section className="grid grid-cols-2 w-full my-12 mt-44">
         {/* Inputs */}
         <div className="bg-neutral-900 flex flex-col p-12 gap-4 rounded-2xl">
           <label className="text-white text-sm font-medium">Amount (COP)</label>
