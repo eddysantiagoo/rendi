@@ -16,7 +16,7 @@ export const Footer = () => {
         <div className="flex flex-col space-y-3">
           <h3 className="font-semibold text-lg">Legal</h3>
           <Link
-            href="/about"
+            href="/terminos-y-condiciones"
             className="text-neutral-400 hover:text-white transition"
           >
             Terminos y condiciones

@@ -116,7 +116,6 @@ export default function Home() {
   return (
     <div className="place-content-center place-items-center space-y-12">
       <Header />
-
       <div className="rounded-xl gap-4 grid place-items-center w-full">
         <h1 className="w-fit px-4 py-2 rounded-lg text-[#00d992] text-5xl font-bold">
           Calcula tus rendimientos
@@ -126,7 +125,6 @@ export default function Home() {
           diferentes cuentas de ahorro en Colombia.
         </p>
       </div>
-
       <section className="">
         <CarouselBanks />
 
@@ -135,7 +133,6 @@ export default function Home() {
           Todas las tasas mostradas son en efectivo anual,{" "}
         </span>
       </section>
-
       <section className="grid md:flex w-full px-10 xl:px-28 mb-12">
         {/* Inputs */}
 
@@ -276,7 +273,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       <section className="p-6 px-28 w-full flex place-content-center">
         <div className="relative flex items-center gap-6 p-4">
           <div className="bg-[#0a0a0a] border-4relative">
@@ -291,11 +287,9 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <section className="p-6 px-28 w-full md:w-[70%]">
+      <section className="p-6 md:px-28 w-full md:w-[70%]">
         <Faq />
       </section>
-
       <Footer />
     </div>
   );
