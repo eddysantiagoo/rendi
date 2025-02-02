@@ -135,7 +135,7 @@ export default function Home() {
         </span>
       </section>
 
-      <section className="grid grid-cols-2 w-full px-28 mb-12">
+      <section className="grid md:grid-cols-2 w-full px-4 md:px-28 mb-12">
         {/* Inputs */}
 
         <div className="bg-neutral-900 flex flex-col p-12 gap-6 rounded-2xl w-full place-content-center">
@@ -217,7 +217,7 @@ export default function Home() {
                 .map((bank, index) => (
                   <div
                     key={index}
-                    className="bg-[#0a0a0a] border-[1px] border-neutral-800 p-4 flex items-center justify-between rounded-lg mb-4 resultShowItem"
+                    className="bg-[#0a0a0a] border-[1px] border-neutral-800 p-4 md:flex items-center justify-between rounded-lg mb-4 resultShowItem"
                   >
                     <article>
                       <div className="flex gap-4 items-center">
@@ -252,7 +252,7 @@ export default function Home() {
                       </div>
                     </article>
 
-                    <article className="bg-[#122322] text-[#00d992] px-4 py-2 rounded-md text-sm font-bold z-10">
+                    <article className="bg-[#122322] text-[#00d992] px-4 py-2 rounded-md text-sm font-bold z-10 w-fit">
                       {bank.tasaEA}%
                     </article>
                   </div>
