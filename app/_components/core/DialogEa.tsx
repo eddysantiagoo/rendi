@@ -14,7 +14,7 @@ export default function DialogEa() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <span className="text-purple-400 cursor-pointer hover:underline hover:underline-offset-1 float-right">
+        <span className="text-purple-400 text-sm cursor-pointer hover:underline hover:underline-offset-1 float-right">
           ¿Qué significa esto?
         </span>
       </DialogTrigger>

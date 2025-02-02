@@ -11,7 +11,7 @@ import Image from "next/image";
 
 export function CarouselBanks() {
   return (
-    <div className="relative container mx-auto px-4 overflow-hidden">
+    <div className="relative  mx-auto px-4 overflow-hidden">
 
       <div className="pointer-events-none absolute top-0 left-0 h-full w-44 bg-gradient-to-r from-white dark:from-[#090d10] to-transparent z-10" />
  
@@ -33,7 +33,7 @@ export function CarouselBanks() {
           {Banks.map((bank, index) => (
             <CarouselItem
               key={index}
-              className="w-full p-2 sm:basis-1/2 md:basis-1/3 lg:basis-1/4"
+              className="w-full p-2 basis-1/4"
             >
               <Card>
                 <CardContent className="flex items-center justify-between p-4">
