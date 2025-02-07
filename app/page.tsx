@@ -123,9 +123,12 @@ export default function Home() {
     <div className="place-content-center place-items-center space-y-12">
       <Header />
       <div className="rounded-xl gap-4 grid place-items-center w-full text-center px-4">
-        <h1 className="w-fit px-4 py-2 rounded-lg text-[#00d992] text-3xl md:text-5xl font-bold">
-          Has rendir tu dinero
-        </h1>
+        <article className="flex flex-col">
+          <h1 className="w-fit rounded-lg text-[#00d992] text-3xl md:text-5xl font-bold">
+            Has rendir tu dinero
+          </h1>
+          <h2 className="text-neutral-600 mb-">(sea poco o mucho)</h2>
+        </article>
         <p className="font-medium text-sm md:text-md px-4 py-2 rounded-full">
           En esta calculadora podrás aproximar tus rendimientos con las
           diferentes cuentas de ahorro y depósitos de bajo monto en Colombia.
@@ -144,7 +147,7 @@ export default function Home() {
 
         <div className="bg-neutral-900 flex flex-col p-4 md:p-12 gap-6 rounded-2xl md:w-1/2 place-content-center">
           <Image
-            className="mx-auto"
+            className="mx-auto w-32 h-auto md:w-48"
             src="/logo.png"
             alt="Logo"
             width={200}
@@ -321,7 +324,6 @@ export default function Home() {
                     key={index}
                     className="bg-[#0a0a0a] border border-neutral-800 p-4 rounded-lg shadow-md mb-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4 transition-all hover:shadow-lg hover:scale-[1.03] duration-120"
                   >
-            
                     <article className="flex gap-4 items-center">
                       <Image
                         src={bank.image}
@@ -352,7 +354,6 @@ export default function Home() {
                       </div>
                     </article>
 
-                    
                     <article className="bg-[#122322] text-[#00d992] px-4 py-2 rounded-md text-sm font-bold w-fit self-start md:self-auto">
                       {bank.tasaEA}%
                     </article>
