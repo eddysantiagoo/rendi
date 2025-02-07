@@ -137,10 +137,12 @@ export default function Home() {
       <section className="hidden md:grid">
         <CarouselBanks />
 
-        <DialogEa />
-        <span className="text-sm float-right mr-1">
-          Todas las tasas mostradas son en efectivo anual,{" "}
-        </span>
+        <div>
+          <DialogEa />
+          <span className="text-sm float-right mr-1">
+            Todas las tasas mostradas son en efectivo anual,{" "}
+          </span>
+        </div>
       </section>
       <section className="grid gap-2 md:gap-0 md:flex w-full px-2 xl:px-28 mb-12">
         {/* Inputs */}
