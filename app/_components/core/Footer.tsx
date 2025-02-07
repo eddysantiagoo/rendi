@@ -24,7 +24,7 @@ export const Footer = () => {
         </div>
 
         <div className="relative w-full max-w-sm rounded-xl overflow-hidden bg-neutral-800 text-white shadow-lg">
-          <div className="h-20 bg-[#097fe8]"></div>
+          <div className="h-20 bg-[#00D983]"></div>
 
           <div className="px-6 py-4 relative flex items-center">
             <div className="absolute -top-10 left-4 w-24 h-24 rounded-full overflow-hidden border-2 border-neutral-900 flex items-center justify-center bg-[#ffba34]">
@@ -43,7 +43,7 @@ export const Footer = () => {
 
             <div className="mt-12">
               <h3 className="text-xl font-bold">@EddySantiago</h3>
-              <p className="text-sm text-neutral-400">The Progenitor</p>
+              <p className="text-sm text-neutral-400">El progenitor</p>
             </div>
           </div>
         </div>
