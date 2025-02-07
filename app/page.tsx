@@ -134,16 +134,17 @@ export default function Home() {
           diferentes cuentas de ahorro y depósitos de bajo monto en Colombia.
         </p>
       </div>
-      <section className="hidden md:grid">
-        <CarouselBanks />
 
-        <div>
-          <DialogEa />
-          <span className="text-sm float-right mr-1">
-            Todas las tasas mostradas son en efectivo anual,{" "}
-          </span>
-        </div>
+      <CarouselBanks />
+
+      <section>
+        <span className="text-sm mr-1">
+          Todas las tasas mostradas son en efectivo anual,{" "}
+        </span>
+        <DialogEa />
       </section>
+
+
       <section className="grid gap-2 md:gap-0 md:flex w-full px-2 xl:px-28 mb-12">
         {/* Inputs */}
 

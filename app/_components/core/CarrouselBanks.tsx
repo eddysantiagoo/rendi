@@ -11,26 +11,33 @@ import Image from "next/image";
 
 export function CarouselBanks() {
   return (
-    <div className="relative  mx-auto px-4 overflow-hidden">
-      <div className="pointer-events-none absolute top-0 left-0 h-full w-44 bg-gradient-to-r from-white dark:from-[#090d10] to-transparent z-10" />
-
-      <div className="pointer-events-none absolute top-0 right-0 h-full w-44 bg-gradient-to-l from-white dark:from-[#090d10] to-transparent z-10" />
+    <div className="relative mx-auto px-4 max-w-7xl overflow-hidden">
+      {/* Gradientes para mejorar la visibilidad */}
+      <div className="pointer-events-none absolute top-0 left-0 h-full w-20 bg-gradient-to-r from-white dark:from-[#090d10] to-transparent z-10" />
+      <div className="pointer-events-none absolute top-0 right-0 h-full w-20 bg-gradient-to-l from-white dark:from-[#090d10] to-transparent z-10" />
 
       <Carousel
         plugins={[
           AutoScroll({
             active: true,
-            speed: 1,
+            speed:
+              typeof window !== "undefined" && window.innerWidth < 768
+                ? 1
+                : 0.5,
+            stopOnMouseEnter:
+              typeof window !== "undefined" && window.innerWidth >= 1024,
             stopOnInteraction: false,
             stopOnFocusIn: false,
-            stopOnMouseEnter: false,
           }),
         ]}
         className="w-full"
       >
-        <CarouselContent>
+        <CarouselContent className="flex snap-x scroll-pl-4">
           {Banks.map((bank, index) => (
-            <CarouselItem key={index} className="w-full p-2 basis-1/4">
+            <CarouselItem
+              key={index}
+              className="w-full p-2 sm:basis-1/1 md:basis-1/1 lg:basis-1/3"
+            >
               <Card>
                 <CardContent className="flex items-center justify-between p-4">
                   <div className="flex gap-4 items-center">

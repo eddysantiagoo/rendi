@@ -1,3 +1,4 @@
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -8,15 +9,21 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { Landmark, Mail } from "lucide-react";
+import { Landmark, Mail, Zap } from "lucide-react";
 
 export default function DialogEa() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <span className="text-purple-400 text-sm cursor-pointer hover:underline hover:underline-offset-1 float-right">
-          ¿Qué significa esto?
-        </span>
+        <Badge className="gap-1 bg-transparent border border-emerald-400 text-white py-1 px-2 cursor-pointer">
+          <Zap
+            className="-ms-0.5 opacity-60"
+            size={12}
+            strokeWidth={2}
+            aria-hidden="true"
+          />
+          ¿Qué es la Tasa Efectiva Anual?
+        </Badge>
       </DialogTrigger>
       <DialogContent>
         <div className="mb-2 flex flex-col items-center gap-2">
