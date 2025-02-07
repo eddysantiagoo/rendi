@@ -3,7 +3,7 @@ import { Header } from "../_components/core/Header";
 
 export default function TermsPage() {
   return (
-    <div className="min-h-screen  text-white flex flex-col items-center space-y-6">
+    <div className="min-h-screen text-white flex flex-col items-center space-y-12">
       <Header />
 
       <header className="w-full max-w-4xl text-center py-6 border-b border-gray-700">
@@ -11,11 +11,11 @@ export default function TermsPage() {
         <p className="text-gray-400 mt-2">Última actualización: 01/02/2025</p>
       </header>
 
-      <main className="w-full max-w-4xl mt-6 space-y-6 text-gray-300">
+      <main className="w-full max-w-4xl mt-6 space-y-6 text-gray-300 px-6">
         <section>
           <h2 className="text-2xl font-semibold text-white">1. Introducción</h2>
           <p>
-            Bienvenido a [Nombre de tu plataforma]. Al utilizar nuestra
+            Bienvenido a elmony. Al utilizar nuestra
             calculadora de rendimientos, aceptas cumplir con estos términos.
           </p>
         </section>
@@ -36,7 +36,7 @@ export default function TermsPage() {
           </h2>
           <p>
             Todo el contenido de la plataforma nos pertenece o tiene licencia
-            adecuada. El uso de nombres de bancos es ilustrativo.
+            adecuada. El uso de nombres de bancos o imagenes es ilustrativo.
           </p>
         </section>
 

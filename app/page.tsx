@@ -20,7 +20,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
-import { ArrowRight, Info, Link, TriangleAlert } from "lucide-react";
+import { ArrowRight, Info, Link, TriangleAlert, Zap } from "lucide-react";
 import { Faq } from "./_components/core/Faq";
 import { Footer } from "./_components/core/Footer";
 import { Badge } from "@/components/ui/badge";
@@ -122,16 +122,16 @@ export default function Home() {
   return (
     <div className="place-content-center place-items-center space-y-12">
       <Header />
-      <div className="rounded-xl gap-4 grid place-items-center w-full">
-        <h1 className="w-fit px-4 py-2 rounded-lg text-[#00d992] text-5xl font-bold">
-          Calcula tus rendimientos
+      <div className="rounded-xl gap-4 grid place-items-center w-full text-center px-4">
+        <h1 className="w-fit px-4 py-2 rounded-lg text-[#00d992] text-3xl md:text-5xl font-bold">
+          Has rendir tu dinero
         </h1>
-        <p className="font-medium text-md  px-4 py-2 rounded-full">
-          En esta calculadora podras aproximar tus rendimientos con las
-          diferentes cuentas de ahorro y despositos de bajo monto en Colombia.
+        <p className="font-medium text-sm md:text-md px-4 py-2 rounded-full">
+          En esta calculadora podrás aproximar tus rendimientos con las
+          diferentes cuentas de ahorro y depósitos de bajo monto en Colombia.
         </p>
       </div>
-      <section className="">
+      <section className="hidden md:grid">
         <CarouselBanks />
 
         <DialogEa />
@@ -139,10 +139,10 @@ export default function Home() {
           Todas las tasas mostradas son en efectivo anual,{" "}
         </span>
       </section>
-      <section className="grid md:flex w-full px-10 xl:px-28 mb-12">
+      <section className="grid gap-2 md:gap-0 md:flex w-full px-2 xl:px-28 mb-12">
         {/* Inputs */}
 
-        <div className="bg-neutral-900 flex flex-col p-12 gap-6 rounded-2xl md:w-1/2 place-content-center">
+        <div className="bg-neutral-900 flex flex-col p-4 md:p-12 gap-6 rounded-2xl md:w-1/2 place-content-center">
           <Image
             className="mx-auto"
             src="/logo.png"
@@ -156,7 +156,7 @@ export default function Home() {
                 className="size-2 rounded-full bg-[#00d992]"
                 aria-hidden="true"
               ></span>
-              Beta
+              Alfa
             </Badge>
           </div>
 
@@ -164,7 +164,6 @@ export default function Home() {
             Valor
           </label>
           <CurrencyInput
-            autoFocus
             prefix="$"
             placeholder=""
             value={amount}
@@ -204,7 +203,7 @@ export default function Home() {
             </Select>
           </div>
 
-          <div className="relative flex w-full items-start gap-2 rounded-lg border border-input p-4 shadow-sm shadow-black/5 has-[[data-state=checked]]:border-ring">
+          <div className="flex flex-col w-full items-start gap-2 rounded-lg border border-input p-4 shadow-sm shadow-black/5 has-[[data-state=checked]]:border-ring">
             {/* <Switch
               id={id}
               checked={isChecked}
@@ -213,17 +212,19 @@ export default function Home() {
               aria-describedby={`${id}-description`}
             /> */}
 
-            <Switch
-              id={id}
-              className="order-1"
-              aria-describedby={`${id}-description`}
-              checked={isChecked}
-              onCheckedChange={(checked) => setChecked(checked)}
-            />
-
-            <span>{isChecked ?? "n/a"}</span>
-            <div className="grid grow gap-2">
-              <Label htmlFor={id}>Incluir depositos de bajo monto</Label>
+            <Badge className="rounded w-fit bg-[#090d10] text-white borde border-emerald-500 ">
+              Nuevo
+            </Badge>
+            <div className="grid grow gap-2 w-full">
+              <article className="flex justify-between items-center">
+                <Label htmlFor={id}>Incluir depositos de bajo monto</Label>
+                <Switch
+                  id={id}
+                  aria-describedby={`${id}-description`}
+                  checked={isChecked}
+                  onCheckedChange={(checked) => setChecked(checked)}
+                />
+              </article>
               <p
                 id={`${id}-description`}
                 className="text-xs text-muted-foreground"
@@ -283,10 +284,10 @@ export default function Home() {
         </div>
 
         {/* Resultados */}
-        <div className="p-6 border border-neutral-900 rounded-2xl w-full max-h-[80svh] overflow-auto bg-[#090d10]">
+        <div className="p-2 md:p-6 border border-neutral-900 rounded-2xl w-full max-h-[80svh] overflow-auto bg-[#090d10]">
           <div className="py-4 flex flex-col gap-4">
-            <h1 className="text-center  text-2xl font-bold">Resultados</h1>
-            <div className="flex gap-4">
+            <h1 className="text-center text-2xl font-bold">Resultados</h1>
+            <div className="flex flex-row gap-4 text-sm md:text-normal">
               <div className="flex-grow flex px-4 py-2 gap-2 flex-col bg-[#122322] text-[#00d992] rounded-md hover:opacity-70 transition-all hover:scale-105">
                 <h3 className="font-medium">Deposito</h3>
                 <span className="font-semibold">{formatCurrency(amount)}</span>
@@ -298,6 +299,17 @@ export default function Home() {
                 </span>
               </div>
             </div>
+            <div className="w-full flex justify-center mt-2 md:hidden">
+              <Badge className="gap-1 mx-auto">
+                <Zap
+                  className="-ms-0.5 opacity-60"
+                  size={12}
+                  strokeWidth={2}
+                  aria-hidden="true"
+                />
+                Has scroll en los resultados para ver más
+              </Badge>
+            </div>
           </div>
 
           <div className="flex flex-col">
@@ -307,42 +319,41 @@ export default function Home() {
                 .map((bank, index) => (
                   <div
                     key={index}
-                    className="bg-[#0a0a0a] border-[1px] border-neutral-800 p-4 md:flex items-center justify-between rounded-lg mb-4 resultShowItem"
+                    className="bg-[#0a0a0a] border border-neutral-800 p-4 rounded-lg shadow-md mb-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4 transition-all hover:shadow-lg hover:scale-[1.03] duration-120"
                   >
-                    <article>
-                      <div className="flex gap-4 items-center">
-                        <Image
-                          src={bank.image}
-                          alt={bank.name}
-                          width={50}
-                          height={50}
-                          className="rounded-lg"
-                        />
-                        <div className="flex flex-col">
-                          <h2 className="text-white text-lg font-medium">
-                            {bank.name}
-                          </h2>
-                          <div className="flex gap-2 items-center">
-                            <span className="text-xl text-[#00d992] font-bold">
-                              {bank.finalAmount}
+            
+                    <article className="flex gap-4 items-center">
+                      <Image
+                        src={bank.image}
+                        alt={bank.name}
+                        width={50}
+                        height={50}
+                        className="rounded-lg"
+                      />
+                      <div className="flex flex-col">
+                        <h2 className="text-white text-lg font-medium">
+                          {bank.name}
+                        </h2>
+                        <div className="flex flex-wrap gap-2 items-center">
+                          <span className="text-xl text-[#00d992] font-bold">
+                            {bank.finalAmount}
+                          </span>
+                          {parseFloat(
+                            bank.retention.replace(/[^0-9.-]+/g, "")
+                          ) > 1 && (
+                            <span className="text-red-400 text-sm">
+                              (RTE FTE: -{bank.retention})
                             </span>
-
-                            {parseFloat(
-                              bank.retention.replace(/[^0-9.-]+/g, "")
-                            ) > 1 && (
-                              <span className="text-red-400 text-sm">
-                                (Se aplica RTE FTE: -{bank.retention})
-                              </span>
-                            )}
-                          </div>
-                          <p className="text-yellow-400">
-                            Tu dinero habría crecido: {bank.interests}
-                          </p>
+                          )}
                         </div>
+                        <p className="text-yellow-400 text-sm">
+                          Tu dinero habría crecido: {bank.interests}
+                        </p>
                       </div>
                     </article>
 
-                    <article className="bg-[#122322] text-[#00d992] px-4 py-2 rounded-md text-sm font-bold z-10 w-fit">
+                    
+                    <article className="bg-[#122322] text-[#00d992] px-4 py-2 rounded-md text-sm font-bold w-fit self-start md:self-auto">
                       {bank.tasaEA}%
                     </article>
                   </div>
