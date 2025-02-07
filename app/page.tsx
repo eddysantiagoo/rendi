@@ -145,10 +145,10 @@ export default function Home() {
       </section>
 
 
-      <section className="grid gap-2 md:gap-0 md:flex w-full px-2 xl:px-28 mb-12">
+      <section className="flex gap-2 md:gap-0 md:flex w-full px-2 xl:px-28 mb-12">
         {/* Inputs */}
 
-        <div className="bg-neutral-900 flex flex-col p-4 md:p-12 gap-6 rounded-2xl md:w-1/2 place-content-center">
+        <div className="bg-neutral-900 flex flex-col p-4 md:p-8 gap-6 rounded-2xl md:w-1/2 place-content-center overflow-auto">
           <Image
             className="mx-auto w-32 h-auto md:w-48"
             src="/logo.png"
@@ -290,7 +290,7 @@ export default function Home() {
         </div>
 
         {/* Resultados */}
-        <div className="p-2 md:p-6 border border-neutral-900 rounded-2xl w-full max-h-[80svh] overflow-auto bg-[#090d10]">
+        <div className="flex flex-col p-2 md:p-6 border border-neutral-900 rounded-2xl w-full bg-[#090d10] max-h-[700px] overflow-auto">
           <div className="py-4 flex flex-col gap-4">
             <h1 className="text-center text-2xl font-bold">Resultados</h1>
             <div className="flex flex-row gap-4 text-sm md:text-normal">
@@ -318,14 +318,14 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="flex flex-col">
+          <div className="flex flex-col relative overflow-y-auto overflow-x-hidden">
             {isFormFilled ? (
               calculateReturns()
                 .sort((a, b) => (b.interestsRaw || 0) - (a.interestsRaw || 0)) // Sorting based on raw 'interests' value
                 .map((bank, index) => (
                   <div
                     key={index}
-                    className="bg-[#0a0a0a] border border-neutral-800 p-4 rounded-lg shadow-md mb-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4 transition-all hover:shadow-lg hover:scale-[1.03] duration-120"
+                    className="bg-[#0a0a0a] border border-neutral-800 p-4 rounded-lg shadow-md mb-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4 transition-all  hover:scale-[1.03] duration-120"
                   >
                     <article className="flex gap-4 items-center">
                       <Image

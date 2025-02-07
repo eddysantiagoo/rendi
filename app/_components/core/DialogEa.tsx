@@ -15,7 +15,7 @@ export default function DialogEa() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Badge className="gap-1 bg-transparent border border-emerald-400 text-white py-1 px-2 cursor-pointer">
+        <Badge className="gap-1 bg-transparent border border-emerald-400 text-white py-1 px-2 cursor-pointer transition-all hover:shadow-lg hover:scale-[1.03] duration-120">
           <Zap
             className="-ms-0.5 opacity-60"
             size={12}

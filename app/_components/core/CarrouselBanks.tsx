@@ -6,10 +6,12 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import { Banks } from "@/app/_DATA/Banks";
+import { Banks, DepositosBajoMonto } from "@/app/_DATA/Banks";
 import Image from "next/image";
 
 export function CarouselBanks() {
+  const combinedBanks = [...Banks, ...DepositosBajoMonto];
+
   return (
     <div className="relative mx-auto px-4 max-w-7xl overflow-hidden">
       {/* Gradientes para mejorar la visibilidad */}
@@ -33,13 +35,13 @@ export function CarouselBanks() {
         className="w-full"
       >
         <CarouselContent className="flex snap-x scroll-pl-4">
-          {Banks.map((bank, index) => (
+          {combinedBanks.map((bank, index) => (
             <CarouselItem
               key={index}
               className="w-full p-2 sm:basis-1/1 md:basis-1/1 lg:basis-1/3"
             >
-              <Card>
-                <CardContent className="flex items-center justify-between p-4">
+              <Card className="transition-all hover:shadow-lg hover:scale-[1.03] duration-200">
+                <CardContent className="flex items-center justify-between p-4 ">
                   <div className="flex gap-4 items-center">
                     <Image
                       src={bank.image}
