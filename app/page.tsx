@@ -288,11 +288,11 @@ export default function Home() {
           <div className="py-4 flex flex-col gap-4">
             <h1 className="text-center text-2xl font-bold">Resultados</h1>
             <div className="flex flex-row gap-4 text-sm md:text-normal">
-              <div className="flex-grow flex px-4 py-2 gap-2 flex-col bg-[#122322] text-[#00d992] rounded-md hover:opacity-70 transition-all hover:scale-105">
+              <div className="flex-grow flex px-4 py-2 gap-2 flex-col bg-[#122322] text-[#00d992] rounded-md transition-all hover:scale-[1.02] duration-120">
                 <h3 className="font-medium">Deposito</h3>
                 <span className="font-semibold">{formatCurrency(amount)}</span>
               </div>
-              <div className="flex-grow flex px-4 py-2 gap-2 flex-col bg-[#122322] text-[#00d992] rounded-md hover:opacity-70 transition-all hover:scale-105">
+              <div className="flex-grow flex px-4 py-2 gap-2 flex-col bg-[#122322] text-[#00d992] rounded-md transition-all hover:scale-[1.02] duration-120">
                 <h3 className="font-medium">Meses</h3>
                 <span className="font-semibold">
                   {`${months || "0"} mes(es)`}{" "}
@@ -377,9 +377,9 @@ export default function Home() {
         </div>
       </section>
       <section className="p-6 px-28 w-full flex place-content-center">
-        <div className="relative flex items-center gap-6 p-4">
-          <div className="bg-[#0a0a0a] border-4relative">
-            <Image src="/eddy.png" alt="Character" width={100} height={150} />
+        <div className="relative flex flex-col md:flex-row items-center gap-6 p-4">
+          <div className="bg-[#0a0a0a] border-4relative bg-transparent">
+            <Image src="/eddy.png" alt="Character" width={80} height={150} />
           </div>
 
           <div
