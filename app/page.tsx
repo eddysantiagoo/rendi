@@ -150,11 +150,11 @@ export default function Home() {
 
         <div className="bg-neutral-900 flex flex-col p-4 md:p-8 gap-6 rounded-2xl md:w-1/2 place-content-center overflow-auto">
           <Image
-            className="mx-auto w-32 h-auto md:w-48"
+            className="mx-auto"
             src="/logo.png"
             alt="Logo"
-            width={200}
-            height={150}
+            width={100}
+            height={50}
           />
           <div className="mx-auto">
             <Badge variant="outline" className="gap-1.5 border-neutral-500">
