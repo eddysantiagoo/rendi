@@ -137,15 +137,14 @@ export default function Home() {
 
       <CarouselBanks />
 
-      <section>
-        <span className="text-sm mr-1">
-          Todas las tasas mostradas son en efectivo anual,{" "}
+      <section className="flex flex-col md:flex-row items-center  gap-4 text-center text-neutral-400">
+        <span className="text-sm">
+          Todas las tasas mostradas son en efectivo anual
         </span>
         <DialogEa />
       </section>
 
-
-      <section className="flex gap-2 md:gap-0 md:flex w-full px-2 xl:px-28 mb-12">
+      <section className="grid gap-2 md:gap-0 md:flex w-full px-2 xl:px-28 mb-12">
         {/* Inputs */}
 
         <div className="bg-neutral-900 flex flex-col p-4 md:p-8 gap-6 rounded-2xl md:w-1/2 place-content-center overflow-auto">

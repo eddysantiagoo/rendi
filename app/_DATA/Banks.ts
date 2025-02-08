@@ -4,6 +4,7 @@ export const Banks = [
   { name: "Lulo Bank", tasaEA: 11.5, image: "/lulo.webp", id: 3 },
   { name: "Rappi Pay", tasaEA: 12, image: "/rappi.jpg", id: 4 },
   { name: "Bancamia", tasaEA: 10.5, image: "/bancamia.webp", id: 5 },
+  { name: "Ba"}
 ];
 
 export const DepositosBajoMonto = [

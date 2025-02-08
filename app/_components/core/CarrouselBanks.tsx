@@ -15,8 +15,8 @@ export function CarouselBanks() {
   return (
     <div className="relative mx-auto px-4 max-w-7xl overflow-hidden">
       {/* Gradientes para mejorar la visibilidad */}
-      <div className="pointer-events-none absolute top-0 left-0 h-full w-20 bg-gradient-to-r from-white dark:from-[#090d10] to-transparent z-10" />
-      <div className="pointer-events-none absolute top-0 right-0 h-full w-20 bg-gradient-to-l from-white dark:from-[#090d10] to-transparent z-10" />
+      <div className="hidden md:block pointer-events-none absolute top-0 left-0 h-full w-20 bg-gradient-to-r from-white dark:from-[#090d10] to-transparent z-10" />
+      <div className="hidden md:block pointer-events-none absolute top-0 right-0 h-full w-20 bg-gradient-to-l from-white dark:from-[#090d10] to-transparent z-10" />
 
       <Carousel
         plugins={[
