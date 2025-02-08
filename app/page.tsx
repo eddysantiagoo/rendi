@@ -335,9 +335,14 @@ export default function Home() {
                         className="rounded-lg"
                       />
                       <div className="flex flex-col">
-                        <h2 className="text-white text-lg font-medium">
-                          {bank.name}
-                        </h2>
+                        <div className="flex gap-1 items-center">
+                          <h2 className="text-white text-lg font-medium">
+                            {bank.name}
+                          </h2>
+                          <p className="text-neutral-400 text-sm">
+                            ({bank.type || "Cuenta de ahorros"})
+                          </p>
+                        </div>
                         <div className="flex flex-wrap gap-2 items-center">
                           <span className="text-xl text-[#00d992] font-bold">
                             {bank.finalAmount}

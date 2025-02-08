@@ -22,6 +22,13 @@ const items = [
     content:
       "Para las cuentas de ahorro, se aplica un porcentaje de retención en la fuente del 7% sobre los rendimientos que se generen; Para el año 2024 se aplica retención si los intereses generados superan el umbral diario de $2.588,88 COP.",
   },
+  {
+    id: '3',
+    icon: Link2,
+    title: "¿Qué es un deposito de bajo monto?",
+    content:
+      "Un Depósito de Bajo Monto en Colombia es una cuenta de ahorro con requisitos simplificados, diseñada para personas con bajos ingresos o poca experiencia bancaria. No requiere saldo mínimo, tiene límites de saldo y movimientos mensuales definidos por la Superintendencia Financiera, y puede abrirse digital o presencialmente. Además, está protegido por el Seguro de Depósitos de Fogafín, ofreciendo una opción segura y accesible para manejar dinero, recibir pagos y ahorrar sin costos elevados.",
+  }
 ];
 
 export const Faq = () => {

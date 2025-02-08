@@ -22,10 +22,7 @@ export function CarouselBanks() {
         plugins={[
           AutoScroll({
             active: true,
-            speed:
-              typeof window !== "undefined" && window.innerWidth < 768
-                ? 1
-                : 0.5,
+            speed: 1,
             stopOnMouseEnter:
               typeof window !== "undefined" && window.innerWidth >= 1024,
             stopOnInteraction: false,
@@ -50,7 +47,12 @@ export function CarouselBanks() {
                       height={50}
                       className="rounded-lg"
                     />
-                    <span className="text-xl font-semibold">{bank.name}</span>
+                    <div>
+                      <span className="text-xl font-semibold">{bank.name}</span>
+                      <p className="text-neutral-500 text-sm">
+                        {bank.type || "Cuenta de ahorros"}
+                      </p>
+                    </div>
                   </div>
                   <span className="text-4xl font-bold text-[#00d983]">
                     {bank.tasaEA}%
