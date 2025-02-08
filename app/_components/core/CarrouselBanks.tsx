@@ -35,7 +35,7 @@ export function CarouselBanks() {
           {combinedBanks.map((bank, index) => (
             <CarouselItem
               key={index}
-              className="w-full p-2 sm:basis-1/1 md:basis-1/1 lg:basis-1/3"
+              className="w-full sm:basis-1/1 md:basis-1/1 lg:basis-1/3"
             >
               <Card className="transition-all hover:shadow-lg hover:scale-[1.03] duration-200">
                 <CardContent className="flex items-center justify-between p-4 ">
