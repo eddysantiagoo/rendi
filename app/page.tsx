@@ -20,7 +20,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
-import { ArrowRight, Info, Link, TriangleAlert, Zap } from "lucide-react";
+import { Info, TriangleAlert, Zap } from "lucide-react";
 import { Faq } from "./_components/core/Faq";
 import { Footer } from "./_components/core/Footer";
 import { Badge } from "@/components/ui/badge";
@@ -52,12 +52,10 @@ export default function Home() {
     }).format(value);
   };
 
-
   const calculateRetention = (interests: number, months: number) => {
     const dailyThreshold = 2588.58; //Limite diario para retención
-    const monthlyThreshold = dailyThreshold * 30; 
+    const monthlyThreshold = dailyThreshold * 30;
 
-    
     if (interests > monthlyThreshold) {
       return interests * 0.07; // 7% de retención
     }
@@ -67,7 +65,8 @@ export default function Home() {
 
   // Calcular rendimientos
   const calculateReturns = () => {
-    if (!amount || !months || parseFloat(amount) <= 0 || parseInt(months) <= 0) return [];
+    if (!amount || !months || parseFloat(amount) <= 0 || parseInt(months) <= 0)
+      return [];
 
     return displayedBanks.map((bank) => {
       const P = parseFloat(amount);
@@ -295,7 +294,9 @@ export default function Home() {
             <div className="flex flex-row gap-4 text-sm md:text-normal">
               <div className="flex-grow flex px-4 py-2 gap-2 flex-col bg-[#122322] text-[#00d992] rounded-md transition-all hover:scale-[1.02] duration-120">
                 <h3 className="font-medium">Deposito</h3>
-                <span className="font-semibold">{formatCurrency(parseFloat(amount))}</span>
+                <span className="font-semibold">
+                  {formatCurrency(parseFloat(amount))}
+                </span>
               </div>
               <div className="flex-grow flex px-4 py-2 gap-2 flex-col bg-[#122322] text-[#00d992] rounded-md transition-all hover:scale-[1.02] duration-120">
                 <h3 className="font-medium">Meses</h3>

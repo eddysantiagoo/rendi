@@ -1,11 +1,10 @@
-import React from "react";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import {
   AccordionContent,
   AccordionItem,
   Accordion,
 } from "../../../components/ui/accordion";
-import { Bell, ChevronDown, LifeBuoy, Link2, ShieldCheck } from "lucide-react";
+import { Bell, ChevronDown, Link2 } from "lucide-react";
 
 const items = [
   {
