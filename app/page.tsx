@@ -52,12 +52,12 @@ export default function Home() {
     }).format(value);
   };
 
-  // Calcular retención en la fuente para Nubank
-  const calculateRetention = (interests: number, months: number) => {
-    const dailyThreshold = 2588.58; // Umbral diario de retención
-    const monthlyThreshold = dailyThreshold * 30; // Aproximado a 30 días
 
-    // Solo se aplica retención si los intereses superan el umbral mensual
+  const calculateRetention = (interests: number, months: number) => {
+    const dailyThreshold = 2588.58; //Limite diario para retención
+    const monthlyThreshold = dailyThreshold * 30; 
+
+    
     if (interests > monthlyThreshold) {
       return interests * 0.07; // 7% de retención
     }
@@ -67,7 +67,7 @@ export default function Home() {
 
   // Calcular rendimientos
   const calculateReturns = () => {
-    if (!amount || !months || amount <= 0 || months <= 0) return [];
+    if (!amount || !months || parseFloat(amount) <= 0 || parseInt(months) <= 0) return [];
 
     return displayedBanks.map((bank) => {
       const P = parseFloat(amount);
@@ -92,30 +92,30 @@ export default function Home() {
   };
 
   // Función para calcular los datos de crecimiento de todos los bancos
-  const calculateGrowthData = () => {
-    if (!amount || !months || amount <= 0 || months <= 0) return [];
+  // const calculateGrowthData = () => {
+  //   if (!amount || !months || amount <= 0 || months <= 0) return [];
 
-    const growthData = [];
-    const P = parseFloat(amount); // Monto inicial
-    const t = parseInt(months); // Número de meses
+  //   const growthData = [];
+  //   const P = parseFloat(amount); // Monto inicial
+  //   const t = parseInt(months); // Número de meses
 
-    // Calcular los datos de crecimiento para cada banco
-    for (let month = 1; month <= t; month++) {
-      const dataPoint = { month }; // Almacenar el mes actual
+  //   // Calcular los datos de crecimiento para cada banco
+  //   for (let month = 1; month <= t; month++) {
+  //     const dataPoint = { month }; // Almacenar el mes actual
 
-      // Calcular el valor final para cada banco
-      Banks.forEach((bank) => {
-        const EA = bank.tasaEA / 100; // Convertir tasa efectiva anual a decimal
-        const r = Math.pow(1 + EA, 1 / 12) - 1; // Tasa mensual
-        const A = P * Math.pow(1 + r, month); // Monto final para este mes
-        dataPoint[bank.name] = A; // Guardar el valor final del banco
-      });
+  //     // Calcular el valor final para cada banco
+  //     Banks.forEach((bank) => {
+  //       const EA = bank.tasaEA / 100; // Convertir tasa efectiva anual a decimal
+  //       const r = Math.pow(1 + EA, 1 / 12) - 1; // Tasa mensual
+  //       const A = P * Math.pow(1 + r, month); // Monto final para este mes
+  //       dataPoint[bank.name] = A; // Guardar el valor final del banco
+  //     });
 
-      growthData.push(dataPoint); // Añadir los datos del mes a la lista
-    }
+  //     growthData.push(dataPoint); // Añadir los datos del mes a la lista
+  //   }
 
-    return growthData;
-  };
+  //   return growthData;
+  // };
 
   const isFormFilled = amount && months;
 
@@ -295,7 +295,7 @@ export default function Home() {
             <div className="flex flex-row gap-4 text-sm md:text-normal">
               <div className="flex-grow flex px-4 py-2 gap-2 flex-col bg-[#122322] text-[#00d992] rounded-md transition-all hover:scale-[1.02] duration-120">
                 <h3 className="font-medium">Deposito</h3>
-                <span className="font-semibold">{formatCurrency(amount)}</span>
+                <span className="font-semibold">{formatCurrency(parseFloat(amount))}</span>
               </div>
               <div className="flex-grow flex px-4 py-2 gap-2 flex-col bg-[#122322] text-[#00d992] rounded-md transition-all hover:scale-[1.02] duration-120">
                 <h3 className="font-medium">Meses</h3>
@@ -320,7 +320,7 @@ export default function Home() {
           <div className="flex flex-col relative overflow-y-auto overflow-x-hidden">
             {isFormFilled ? (
               calculateReturns()
-                .sort((a, b) => (b.interestsRaw || 0) - (a.interestsRaw || 0)) // Sorting based on raw 'interests' value
+                .sort((a, b) => (b.interestsRaw || 0) - (a.interestsRaw || 0))
                 .map((bank, index) => (
                   <div
                     key={index}
