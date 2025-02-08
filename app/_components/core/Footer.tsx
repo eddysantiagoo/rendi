@@ -6,7 +6,7 @@ export const Footer = () => {
     <footer className="bg-neutral-900 text-white py-12 px-6 rounded-2xl">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
         <div>
-          <Image src="/logo.png" alt="elmony" width={120} height={30} />
+          <Image src="/logo.png" alt="rendi" width={80} height={80} />
           <p className="text-sm text-neutral-400 mt-2">
             Optimiza tus ahorros y descubre cuánto puedes ganar con las mejores
             tasas en Colombia 🚀

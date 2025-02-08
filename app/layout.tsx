@@ -8,7 +8,7 @@ import { Blobs } from "./_components/core/Blob";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "elmony - Calculadora de Rendimientos en Colombia",
+  title: "rendi - Calculadora de Rendimientos en Colombia",
   description:
     "Optimiza tus ahorros y descubre cuánto puedes ganar con las mejores tasas de ahorro en Colombia. Calcula tus rendimientos fácil y rápido.",
   keywords: [
@@ -26,27 +26,27 @@ export const metadata: Metadata = {
   ],
   robots: "index, follow",
   openGraph: {
-    title: "elmony - Calculadora de Rendimientos en Colombia",
+    title: "rendi - Calculadora de Rendimientos en Colombia",
     description:
       "Optimiza tus ahorros y descubre cuánto puedes ganar con las mejores tasas de ahorro en Colombia.",
-    url: "https://elmony.eddyy.dev/",
-    siteName: "elmony",
+    url: "https://rendi.eddyy.dev/",
+    siteName: "rendi",
     images: [
       {
-        url: "https://elmony.eddyy.dev/og-image.jpg",
+        url: "https://rendi.eddyy.dev/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "elmony - Calculadora de Rendimientos",
+        alt: "rendi - Calculadora de Rendimientos",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "elmony - Calculadora de Rendimientos en Colombia",
+    title: "rendi - Calculadora de Rendimientos en Colombia",
     description:
       "Descubre cuánto puedes ganar con las mejores tasas de ahorro en Colombia.",
-    images: ["https://elmony.eddyy.dev/og-image.jpg"],
+    images: ["https://rendi.eddyy.dev/og-image.jpg"],
   },
 };
 

@@ -2,4 +2,4 @@ User-agent: *
 Disallow: /admin
 Allow: /
 
-Sitemap: https://elmony.eddyy.dev/sitemap.xml
+Sitemap: https://rendi.eddyy.dev/sitemap.xml

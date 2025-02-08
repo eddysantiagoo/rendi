@@ -15,7 +15,7 @@ export default function TermsPage() {
         <section>
           <h2 className="text-2xl font-semibold text-white">1. Introducción</h2>
           <p>
-            Bienvenido a elmony. Al utilizar nuestra
+            Bienvenido a Rendi. Al utilizar nuestra
             calculadora de rendimientos, aceptas cumplir con estos términos.
           </p>
         </section>
