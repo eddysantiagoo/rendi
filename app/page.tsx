@@ -52,7 +52,7 @@ export default function Home() {
     }).format(value);
   };
 
-  const calculateRetention = (interests: number, months: number) => {
+  const calculateRetention = (interests: number) => {
     const dailyThreshold = 2588.58; //Limite diario para retención
     const monthlyThreshold = dailyThreshold * 30;
 
@@ -76,7 +76,7 @@ export default function Home() {
 
       const A = P * Math.pow(1 + r, t); // Monto final con interés compuesto
       const interests = A - P; // Rendimiento generado
-      const retention = calculateRetention(interests, t); // Retención ajustada
+      const retention = calculateRetention(interests); // Retención ajustada
       const finalAmount = A - retention; // Monto final después de retención
 
       return {
