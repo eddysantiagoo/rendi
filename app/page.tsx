@@ -119,7 +119,7 @@ export default function Home() {
   const isFormFilled = amount && months;
 
   return (
-    <div className="place-content-center place-items-center space-y-12">
+    <div className="min-h-screen text-white flex flex-col items-center space-y-12">
       <Header />
       <div className="rounded-xl gap-4 grid place-items-center w-full text-center px-4">
         <article className="flex flex-col">
@@ -134,7 +134,9 @@ export default function Home() {
         </p>
       </div>
 
-      <CarouselBanks />
+      <div className="place-content-center place-items-center w-full overflow-hidden">
+        <CarouselBanks />
+      </div>
 
       <section className="flex flex-col md:flex-row items-center  gap-4 text-center text-neutral-400">
         <span className="text-sm">
