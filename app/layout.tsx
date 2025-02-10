@@ -8,7 +8,7 @@ import { Blobs } from "./_components/core/Blob";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "rendi - Calculadora de Rendimientos en Colombia",
+  title: "rendi - Calculadora de Rendimientos",
   description:
     "Optimiza tus ahorros y descubre cuánto puedes ganar con las mejores tasas de ahorro en Colombia. Calcula tus rendimientos fácil y rápido.",
   keywords: [
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     siteName: "rendi",
     images: [
       {
-        url: "https://rendi.eddyy.dev/og-image.jpg",
+        url: "/rendibg.png",
         width: 1200,
         height: 630,
         alt: "rendi - Calculadora de Rendimientos",
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     title: "rendi - Calculadora de Rendimientos en Colombia",
     description:
       "Descubre cuánto puedes ganar con las mejores tasas de ahorro en Colombia.",
-    images: ["https://rendi.eddyy.dev/og-image.jpg"],
+    images: ["/rendibg.png"],
   },
 };
 
