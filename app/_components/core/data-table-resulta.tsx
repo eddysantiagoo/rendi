@@ -51,7 +51,7 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <div>
+    <div className="md:max-w-full overflow-x-auto">
       <div className="inline-flex gap-2 w-full items-center justify-end py-4">
         <div className="relative">
           <Search className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground"></Search>
@@ -69,7 +69,7 @@ export function DataTable<TData, TValue>({
       </div>
       <section className="[&>div]:max-h-[28rem]">
         <Table className="border-separate border-spacing-0">
-          <TableHeader className="sticky top-0 z-10 bg-background/70 backdrop-blur-sm">
+          <TableHeader className="sticky -top-1 z-10 bg-background/70 backdrop-blur-sm">
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {

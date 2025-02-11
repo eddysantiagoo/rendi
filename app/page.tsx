@@ -81,6 +81,12 @@ export default function Home() {
       const retention = calculateRetention(interests); // Retención ajustada
       const finalAmount = A - retention; // Monto final después de retención
 
+      // Calcular valores mensuales
+      const monthlyA = P * Math.pow(1 + r, 1); // Monto final después de 1 mes
+      const monthlyInterests = monthlyA - P; // Rendimiento generado en 1 mes
+      const monthlyRetention = calculateRetention(monthlyInterests); // Retención ajustada en 1 mes
+      const finalAmountMonthly = monthlyA - monthlyRetention; // Monto final después de retención en 1 mes
+
       return {
         ...bank,
         deposit: formatCurrency(P),
@@ -91,6 +97,10 @@ export default function Home() {
         interestsRaw: interests,
         retention: formatCurrency(retention),
         retentionRaw: retention,
+
+        finalAmountMonthlyRaw: finalAmountMonthly,
+        interestsMonthlyRaw: monthlyInterests,
+        monthlyRetention: monthlyRetention,
       };
     });
   };
@@ -373,8 +383,7 @@ export default function Home() {
                     </article>
 
                     <article>
-                    <DialogDetails {...bank} />
-
+                      <DialogDetails {...bank} />
                     </article>
                   </div>
                 ))

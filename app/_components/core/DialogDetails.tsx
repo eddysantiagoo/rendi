@@ -16,11 +16,11 @@ const generateSampleData = (
   deposit: number,
   interest: number,
   retention: number,
-  finalAmountRaw: number,
-  days: number,
+  finalAmountMonthlyRaw: number,
+  days: number
 ) => {
   const data = [];
-  const dailyInterest = interest / days; //
+  const dailyInterest = interest / days;
   let currentBalance = deposit;
 
   for (let i = 1; i <= days; i++) {
@@ -30,8 +30,8 @@ const generateSampleData = (
       day: i,
       value: currentBalance,
       ganancias: dailyInterest,
-      retention: retention/30,
-      finalAmount: finalAmountRaw
+      retention: retention / 30,
+      finalAmount: finalAmountMonthlyRaw,
     });
   }
 
@@ -39,16 +39,16 @@ const generateSampleData = (
 };
 
 export const DialogDetails = ({
-  interestsRaw,
+  interestsMonthlyRaw,
   depositRaw,
-  retentionRaw,
-  finalAmountRaw
+  monthlyRetention,
+  finalAmountMonthlyRaw,
 }: any) => {
   const sampleData = generateSampleData(
     depositRaw,
-    interestsRaw,
-    retentionRaw,
-    finalAmountRaw,
+    interestsMonthlyRaw,
+    monthlyRetention,
+    finalAmountMonthlyRaw,
     30
   );
 
@@ -59,15 +59,14 @@ export const DialogDetails = ({
           Detalles
         </span>
       </DialogTrigger>
-      <DialogContent className="max-w-3xl">
+      <DialogContent className="max-w-sm md:max-w-xl">
         <DialogHeader>
-          <DialogTitle>Ganancias diarias</DialogTitle>
+          <DialogTitle>Ganancias diarias mensuales</DialogTitle>
           <DialogDescription>
-            Este es un resumen de cómo crece tu inversión día a día en un mes
-            natural.
+            Este es un resumen de cómo crece tu inversión en 1 mes natural
           </DialogDescription>
         </DialogHeader>
-        <div className="grid gap-4 py-4">
+        <div>
           <DataTable columns={columns} data={sampleData} />
         </div>
         <DialogFooter>
