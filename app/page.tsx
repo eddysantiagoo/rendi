@@ -124,9 +124,8 @@ export default function Home() {
       <div className="rounded-xl gap-4 grid place-items-center w-full text-center px-4">
         <article className="flex flex-col">
           <h1 className="w-fit rounded-lg text-[#00d992] text-3xl md:text-5xl font-bold">
-            Has rendir tu dinero
+            Haz rendir tu dinero
           </h1>
-          <h2 className="text-neutral-600 mb-">(sea poco o mucho)</h2>
         </article>
         <p className="font-medium text-sm md:text-md px-4 py-2 rounded-full">
           En esta calculadora podrás aproximar tus rendimientos con las
@@ -359,7 +358,7 @@ export default function Home() {
                           )}
                         </div>
                         <p className="text-yellow-400 text-sm">
-                          Tu dinero habría crecido: {bank.interests}
+                          Tu dinero habrá crecido: {bank.interests}
                         </p>
                       </div>
                     </article>
