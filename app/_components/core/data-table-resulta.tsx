@@ -7,6 +7,7 @@ import {
   getCoreRowModel,
   getFilteredRowModel,
   getSortedRowModel,
+  Row,
   SortingState,
   useReactTable,
 } from "@tanstack/react-table";
@@ -29,6 +30,7 @@ interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
 }
+
 
 export function DataTable<TData, TValue>({
   columns,
@@ -53,7 +55,10 @@ export function DataTable<TData, TValue>({
   return (
     <div className="md:max-w-full overflow-x-auto">
       <div className="inline-flex gap-2 w-full items-center justify-end py-4">
-        <div className="relative">
+        <Button variant={"outline"} size={"sm"} >
+          Exportar a Excel
+        </Button>
+        <div className="relative flex">
           <Search className="absolute left-2 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground"></Search>
           <Input
             type="search"
