@@ -7,7 +7,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ColumnDef } from "@tanstack/react-table";
+import { ColumnDef, FilterFn } from "@tanstack/react-table";
 import { ArrowDownUp, Ellipsis, Eye } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
 import Link from "next/link";
@@ -19,6 +19,11 @@ export type Investment = {
   value: number;
   ganancias: number;
   finalAmount: number;
+};
+
+const exactNumberFilter: FilterFn<any> = (row, columnId, value) => {
+  const cellValue = row.getValue(columnId);
+  return Number(cellValue) === Number(value);
 };
 
 export const columns: ColumnDef<Investment>[] = [
@@ -47,12 +52,13 @@ export const columns: ColumnDef<Investment>[] = [
     accessorKey: "day",
     size: 0,
     header: "Día",
+    filterFn: exactNumberFilter,
   },
   {
     accessorKey: "value",
     header: ({ column }) => (
       <div className="inline-flex w-full items-center justify-between">
-        Valor
+        Saldo
         <Button
           variant="ghost"
           size={"icon"}
@@ -101,30 +107,6 @@ export const columns: ColumnDef<Investment>[] = [
             currency: "COP",
           })}
         </div>
-      );
-    },
-  },
-  {
-    id: "options",
-    header: "Acciones",
-    size: 10,
-    cell: (cell) => {
-      return (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant={"ghost"} size={"icon"}>
-              <Ellipsis></Ellipsis>
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent>
-            <DropdownMenuItem asChild>
-              <Link href={`/channels/`}>
-                <Eye></Eye>
-                Ver
-              </Link>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
       );
     },
   },
