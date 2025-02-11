@@ -24,6 +24,8 @@ import { Info, TriangleAlert, Zap } from "lucide-react";
 import { Faq } from "./_components/core/Faq";
 import { Footer } from "./_components/core/Footer";
 import { Badge } from "@/components/ui/badge";
+import TableResults from "./_components/Bank/TableResults";
+import { DialogDetails } from "./_components/core/DialogDetails";
 
 export default function Home() {
   const id = useId();
@@ -82,10 +84,13 @@ export default function Home() {
       return {
         ...bank,
         deposit: formatCurrency(P),
+        depositRaw: P,
         finalAmount: formatCurrency(finalAmount),
+        finalAmountRaw: finalAmount,
         interests: formatCurrency(interests),
         interestsRaw: interests,
         retention: formatCurrency(retention),
+        retentionRaw: retention,
       };
     });
   };
@@ -366,6 +371,11 @@ export default function Home() {
                     <article className="bg-[#122322] text-[#00d992] px-4 py-2 rounded-md text-sm font-bold w-fit self-start md:self-auto">
                       {bank.tasaEA}%
                     </article>
+
+                    <article>
+                    <DialogDetails {...bank} />
+
+                    </article>
                   </div>
                 ))
             ) : (
@@ -403,6 +413,8 @@ export default function Home() {
       <section className="p-6 md:px-28 w-full md:w-[70%]">
         <Faq />
       </section>
+
+      <TableResults />
       <Footer />
     </div>
   );
