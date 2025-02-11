@@ -9,6 +9,7 @@ import { Blobs } from "./_components/core/Blob";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://rendi.eddyy.dev'),
   title: "rendi - Calculadora de Rendimientos",
   description:
     "Optimiza tus ahorros y descubre cuánto puedes ganar con las mejores tasas de ahorro en Colombia. Calcula tus rendimientos fácil y rápido.",
