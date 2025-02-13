@@ -92,7 +92,7 @@ export function DataTable<TData, TValue>({
   };
 
   return (
-    <div className="md:max-w-full overflow-x-auto">
+    <div className="max-w-[20rem] md:max-w-full overflow-x-auto">
       <div className="inline-flex gap-2 w-full items-center justify-end py-4">
         <Button
           variant={"outline"}
@@ -115,7 +115,7 @@ export function DataTable<TData, TValue>({
           />
         </div>
       </div>
-      <section className="[&>div]:max-h-[28rem]">
+      <section className="flex [&>div]:max-h-[60vh] md:[&>div]:max-h-[28rem]">
         <Table className="border-separate border-spacing-0">
           <TableHeader className="sticky -top-1 z-10 bg-background/70 backdrop-blur-sm">
             {table.getHeaderGroups().map((headerGroup) => (
