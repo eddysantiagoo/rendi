@@ -1,25 +1,10 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { ColumnDef, FilterFn } from "@tanstack/react-table";
-import { ArrowDownUp, Ellipsis, Eye } from "lucide-react";
+import { ArrowDownUp } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
-import Link from "next/link";
-
-// This type is used to define the shape of our data.
-// You can use a Zod schema here if you want.
-export type Investment = {
-  day: number;
-  value: number;
-  ganancias: number;
-  finalAmount: number;
-};
+import { Investment } from "./interfaces/Investment";
 
 const exactNumberFilter: FilterFn<any> = (row, columnId, value) => {
   const cellValue = row.getValue(columnId);
