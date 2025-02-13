@@ -12,6 +12,7 @@ import { DataTable } from "./data-table-resulta";
 import { columns } from "./columns-table-results";
 import { EyeIcon, TriangleAlert } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { DialogDetailsProps } from "./interfaces/DialogDetailsProps";
 
 // Función corregida para calcular la tabla de ganancias diarias
 const generateSampleData = (
@@ -46,7 +47,7 @@ export const DialogDetails = ({
   monthlyRetention,
   finalAmountMonthlyRaw,
   months,
-}: any) => {
+}: DialogDetailsProps) => {
   const sampleData = generateSampleData(
     depositRaw,
     interestsMonthlyRaw,

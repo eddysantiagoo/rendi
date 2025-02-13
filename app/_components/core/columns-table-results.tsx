@@ -6,7 +6,14 @@ import { ArrowDownUp } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Investment } from "./interfaces/Investment";
 
-const exactNumberFilter: FilterFn<any> = (row, columnId, value) => {
+interface Column {
+  id: string;
+  size: number;
+  header: any;
+  cell: any;
+}
+
+const exactNumberFilter: FilterFn<Column> = (row, columnId, value) => {
   const cellValue = row.getValue(columnId);
   return Number(cellValue) === Number(value);
 };
