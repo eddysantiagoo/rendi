@@ -3,5 +3,5 @@ export interface DialogDetailsProps {
     depositRaw: number;
     monthlyRetention: number;
     finalAmountMonthlyRaw: number;
-    months: number;
+    monthsRaw: number;
 }

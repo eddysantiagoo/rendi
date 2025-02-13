@@ -96,7 +96,7 @@ export default function Home() {
         interestsRaw: interests,
         retention: formatCurrency(retention),
         retentionRaw: retention,
-        months,
+        monthsRaw: t,
 
         finalAmountMonthlyRaw: finalAmountMonthly,
         interestsMonthlyRaw: monthlyInterests,

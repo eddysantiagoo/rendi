@@ -46,7 +46,7 @@ export const DialogDetails = ({
   depositRaw,
   monthlyRetention,
   finalAmountMonthlyRaw,
-  months,
+  monthsRaw,
 }: DialogDetailsProps) => {
   const sampleData = generateSampleData(
     depositRaw,
@@ -81,7 +81,7 @@ export const DialogDetails = ({
           />
         </div>
 
-        {months > 1 ? (
+        {monthsRaw > 1 ? (
           <div className="rounded-lg border border-blue-600 px-4 py-3">
             <div className="flex gap-3 ">
               <TriangleAlert
@@ -92,7 +92,7 @@ export const DialogDetails = ({
               />
               <div className="flex grow justify-between gap-3">
                 <p className="text-sm">
-                  Tu inversión es a {months} meses. Actualmente, mostramos la
+                  Tu inversión es a {monthsRaw} meses. Actualmente, mostramos la
                   actividad del primer mes como referencia.
                 </p>
               </div>
