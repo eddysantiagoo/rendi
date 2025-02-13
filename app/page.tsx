@@ -24,6 +24,7 @@ import { Info, TriangleAlert, Zap } from "lucide-react";
 import { Faq } from "./_components/core/Faq";
 import { Footer } from "./_components/core/Footer";
 import { Badge } from "@/components/ui/badge";
+import { DialogDetails } from "./_components/core/DialogDetails";
 
 export default function Home() {
   const id = useId();
@@ -79,13 +80,27 @@ export default function Home() {
       const retention = calculateRetention(interests); // Retención ajustada
       const finalAmount = A - retention; // Monto final después de retención
 
+      // Calcular valores mensuales
+      const monthlyA = P * Math.pow(1 + r, 1); // Monto final después de 1 mes
+      const monthlyInterests = monthlyA - P; // Rendimiento generado en 1 mes
+      const monthlyRetention = calculateRetention(monthlyInterests); // Retención ajustada en 1 mes
+      const finalAmountMonthly = monthlyA - monthlyRetention; // Monto final después de retención en 1 mes
+
       return {
         ...bank,
         deposit: formatCurrency(P),
+        depositRaw: P,
         finalAmount: formatCurrency(finalAmount),
+        finalAmountRaw: finalAmount,
         interests: formatCurrency(interests),
         interestsRaw: interests,
         retention: formatCurrency(retention),
+        retentionRaw: retention,
+        monthsRaw: t,
+
+        finalAmountMonthlyRaw: finalAmountMonthly,
+        interestsMonthlyRaw: monthlyInterests,
+        monthlyRetention: monthlyRetention,
       };
     });
   };
@@ -148,20 +163,13 @@ export default function Home() {
         {/* Inputs */}
 
         <div className="bg-neutral-900 flex flex-col p-4 md:p-8 gap-6 rounded-2xl md:w-1/2 place-content-center overflow-auto">
-          <Image
-            className="mx-auto"
-            src="/logo.png"
-            alt="Logo"
-            width={100}
-            height={50}
-          />
           <div className="mx-auto">
             <Badge variant="outline" className="gap-1.5 border-neutral-500">
               <span
                 className="size-2 rounded-full bg-[#00d992]"
                 aria-hidden="true"
               ></span>
-              Alfa
+              Beta
             </Badge>
           </div>
 
@@ -217,9 +225,7 @@ export default function Home() {
               aria-describedby={`${id}-description`}
             /> */}
 
-            <Badge className="rounded w-fit bg-[#090d10] text-white borde border-emerald-500 ">
-              Nuevo
-            </Badge>
+
             <div className="grid grow gap-2 w-full">
               <article className="flex justify-between items-center">
                 <Label htmlFor={id}>Incluir depositos de bajo monto</Label>
@@ -363,8 +369,12 @@ export default function Home() {
                       </div>
                     </article>
 
-                    <article className="bg-[#122322] text-[#00d992] px-4 py-2 rounded-md text-sm font-bold w-fit self-start md:self-auto">
-                      {bank.tasaEA}%
+                    <article className="flex flex-col gap-2">
+                      <article className="bg-[#122322] w-full text-[#00d992] px-4 py-2 rounded-md text-sm font-bold text-center self-start md:self-auto">
+                        {bank.tasaEA}%
+                      </article>
+
+                      <DialogDetails {...bank} />
                     </article>
                   </div>
                 ))
