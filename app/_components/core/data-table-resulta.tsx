@@ -97,10 +97,8 @@ export function DataTable<TData, TValue>({
         <Button
           variant={"outline"}
           size={"sm"}
-          className="flex items-center gap-1"
           onClick={() => handleExport(depositRaw)}
         >
-          <FileSpreadsheet className="size-4"/> 
           Exportar a Excel
         </Button>
         <div className="relative flex">
