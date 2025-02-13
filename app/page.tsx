@@ -24,7 +24,6 @@ import { Info, TriangleAlert, Zap } from "lucide-react";
 import { Faq } from "./_components/core/Faq";
 import { Footer } from "./_components/core/Footer";
 import { Badge } from "@/components/ui/badge";
-import TableResults from "./_components/Bank/TableResults";
 import { DialogDetails } from "./_components/core/DialogDetails";
 
 export default function Home() {
@@ -414,8 +413,6 @@ export default function Home() {
       <section className="p-6 md:px-28 w-full md:w-[70%]">
         <Faq />
       </section>
-
-      <TableResults />
       <Footer />
     </div>
   );
