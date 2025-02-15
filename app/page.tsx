@@ -225,7 +225,6 @@ export default function Home() {
               aria-describedby={`${id}-description`}
             /> */}
 
-
             <div className="grid grow gap-2 w-full">
               <article className="flex justify-between items-center">
                 <Label htmlFor={id}>Incluir depositos de bajo monto</Label>
@@ -332,7 +331,7 @@ export default function Home() {
                 .map((bank, index) => (
                   <div
                     key={index}
-                    className="bg-[#0a0a0a] border border-neutral-800 p-4 rounded-lg shadow-md mb-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4 transition-all  hover:scale-[1.03] duration-120"
+                    className="bg-[#0a0a0a] border border-neutral-800 p-4 rounded-lg shadow-md mb-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4 "
                   >
                     <article className="flex gap-4 items-center">
                       <Image

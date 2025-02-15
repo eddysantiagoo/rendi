@@ -38,7 +38,7 @@ export function CarouselBanks() {
               className="w-full sm:basis-1/1 md:basis-1/1 lg:basis-1/3"
             >
               <Card className="transition-all hover:shadow-lg hover:scale-[1.03] duration-200">
-                <CardContent className="flex items-center justify-between p-4 ">
+                <CardContent className="flex items-center justify-between p-4">
                   <div className="flex gap-4 items-center">
                     <Image
                       src={bank.image}
@@ -48,7 +48,16 @@ export function CarouselBanks() {
                       className="rounded-lg"
                     />
                     <div>
-                      <span className="text-xl font-semibold">{bank.name}</span>
+                      <article className="flex items-center gap-2">
+                        <span className="text-xl font-semibold">
+                          {bank.name}
+                        </span>
+                        {"act" in bank && bank.act && (
+                          <span className="border border-[#00d983]  text-white text-xs font-semibold px-2 py-1 rounded-full">
+                            Tasa Actualizada
+                          </span>
+                        )}
+                      </article>
                       <p className="text-neutral-500 text-sm">
                         {bank.type || "Cuenta de ahorros"}
                       </p>
