@@ -160,7 +160,7 @@ export default function Home() {
         <DialogEa />
       </section>
 
-      <section className="grid gap-2 md:gap-0 md:flex w-full px-2 xl:px-28 mb-12">
+      <section className="grid gap-2 md:gap-0 md:flex w-full px-2 xl:px-28">
         {/* Inputs */}
 
         <div className="bg-neutral-900 flex flex-col p-4 md:p-8 gap-6 rounded-2xl md:w-1/2 place-content-center overflow-auto">
@@ -168,20 +168,22 @@ export default function Home() {
             <DialogFormula />
           </div>
 
-          <label className="text-white text-xl font-medium text-left">
-            Valor
-          </label>
-          <CurrencyInput
-            prefix="$"
-            placeholder=""
-            value={amount}
-            onValueChange={(value) => setAmount(value ?? "")}
-            intlConfig={{ locale: "es-CO", currency: "COP" }}
-            className="w-full p-4 rounded-lg bg-[#090d10] font-bold text-white focus:ring-2 focus:ring-blue-500 outline-none text-lg"
-          />
+          <div className="space-y-2 w-full">
+            <label className="text-white text-md font-semibold text-left">
+              Valor
+            </label>
+            <CurrencyInput
+              prefix="$"
+              placeholder=""
+              value={amount}
+              onValueChange={(value) => setAmount(value ?? "")}
+              intlConfig={{ locale: "es-CO", currency: "COP" }}
+              className="w-full p-3 rounded-lg bg-[#090d10] font-semibold text-white focus:ring-2 focus:ring-emerald-500 outline-none text-md"
+            />
+          </div>
 
-          <div className="space-y-4 w-full">
-            <Label htmlFor={months} className="text-xl">
+          <div className="space-y-2 w-full">
+            <Label htmlFor={months} className="text-md">
               Meses <span className="text-destructive">*</span>
             </Label>
             <Select
@@ -190,7 +192,7 @@ export default function Home() {
             >
               <SelectTrigger
                 id={months}
-                className="w-full py-6 px-4 font-bold text-md"
+                className="w-full py-6 px-4 text-md font-semibold"
               >
                 <SelectValue placeholder="Meses" />
               </SelectTrigger>

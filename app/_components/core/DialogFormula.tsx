@@ -16,7 +16,7 @@ export default function DialogFormula() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Badge className="gap-1 bg-transparent border border-emerald-400 text-white py-1 px-2 cursor-pointer transition-all hover:shadow-lg hover:scale-[1.03] duration-120">
+        <Badge className="gap-1 bg-transparent border border-emerald-400 text-white py-2 px-4 cursor-pointer transition-all hover:shadow-lg hover:scale-[1.03] duration-120">
           <Zap
             className="-ms-0.5 opacity-60"
             size={12}
@@ -41,7 +41,9 @@ export default function DialogFormula() {
                   paso cómo lo hacemos:
                 </section>
 
-                <h4 className="font-bold mb-2 text-white">1. Tasa Efectiva Anual (EA):</h4>
+                <h4 className="font-bold mb-2 text-white">
+                  1. Tasa Efectiva Anual (EA):
+                </h4>
                 <div className="mb-4">
                   Cada banco informa una Tasa Efectiva Anual (EA), que
                   representa el rendimiento total que obtendrías en un año si
@@ -121,7 +123,9 @@ export default function DialogFormula() {
                   </li>
                 </ul>
 
-                <h4 className="font-bold mb-2  text-white">4. Rendimiento Generado:</h4>
+                <h4 className="font-bold mb-2  text-white">
+                  4. Rendimiento Generado:
+                </h4>
                 <div className="mb-4">
                   Para saber cuánto has ganado, restamos el capital inicial (
                   <code className="bg-gray-700 text-white px-1 rounded">P</code>
