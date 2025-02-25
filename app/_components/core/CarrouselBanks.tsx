@@ -49,7 +49,7 @@ export function CarouselBanks() {
                     />
                     <div>
                       <article className="flex items-center gap-2">
-                        <span className="text-xl font-semibold">
+                        <span className="text-xl font-semibold whitespace-nowrap truncate">
                           {bank.name}
                         </span>
                         {"act" in bank && bank.act && (

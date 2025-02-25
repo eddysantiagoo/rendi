@@ -25,6 +25,7 @@ import { Faq } from "./_components/core/Faq";
 import { Footer } from "./_components/core/Footer";
 import { Badge } from "@/components/ui/badge";
 import { DialogDetails } from "./_components/core/DialogDetails";
+import DialogFormula from "./_components/core/DialogFormula";
 
 export default function Home() {
   const id = useId();
@@ -164,13 +165,7 @@ export default function Home() {
 
         <div className="bg-neutral-900 flex flex-col p-4 md:p-8 gap-6 rounded-2xl md:w-1/2 place-content-center overflow-auto">
           <div className="mx-auto">
-            <Badge variant="outline" className="gap-1.5 border-neutral-500">
-              <span
-                className="size-2 rounded-full bg-[#00d992]"
-                aria-hidden="true"
-              ></span>
-              Beta
-            </Badge>
+            <DialogFormula />
           </div>
 
           <label className="text-white text-xl font-medium text-left">
