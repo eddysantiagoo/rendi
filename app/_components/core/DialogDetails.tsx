@@ -60,9 +60,9 @@ export const DialogDetails = ({
     <Dialog>
       <DialogTrigger asChild>
         <span className="bg-[#122322] flex relative gap-1 items-center justify-center text-sm w-full text-[#00d992] px-4 py-2 rounded-m font-bold text-center self-start md:self-auto cursor-pointer hover:opacity-70 transition-all duration-100">
-          <Badge className="rounded absolute -bottom-4  w-fit bg-[#090d10] text-white borde border-emerald-500 ">
+          {/* <Badge className="rounded absolute -bottom-4  w-fit bg-[#090d10] text-white borde border-emerald-500 ">
             Nuevo
-          </Badge>
+          </Badge> */}
           <EyeIcon className="size-5" /> Detalles
         </span>
       </DialogTrigger>
