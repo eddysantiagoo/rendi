@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { Banks, DepositosBajoMonto } from "../../_DATA/Banks";
 import Image from "next/image";
-import { unstable_ViewTransition as ViewTransition } from "react";
 import Link from "next/link";
 
 interface CardBankProps {
@@ -61,7 +60,7 @@ export const DetailedCardBank = ({ slug }: CardBankProps) => {
       </motion.div>
 
       <motion.div
-        className="max-w-md w-full bg-card rounded-2xl shadow-lg overflow-hidden border border-border"
+        className="max-w-md w-full  rounded-2xl shadow-lg overflow-hidden border border-border"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{
@@ -71,19 +70,15 @@ export const DetailedCardBank = ({ slug }: CardBankProps) => {
         }}
       >
         {/* Header with dark gradient */}
-        <div className="relative h-48 bg-gradient-to-r from-primary/10 to-primary/20">
+        <div className="relative h-48 backdrop-blur-md bg-white/50 dark:bg-black/30 ">
           <motion.div className="absolute inset-0 flex items-center justify-center">
-            <div className="backdrop-blur-md bg-background/20 p-6 rounded-full">
-              <ViewTransition name="bank-image">
-                <Image
-                  src={bank.image}
-                  alt={bank.name}
-                  width={100}
-                  height={100}
-                  className="rounded-full object-cover shadow-md"
-                />
-              </ViewTransition>
-            </div>
+            <Image
+              src={bank.image}
+              alt={bank.name}
+              width={100}
+              height={100}
+              className="rounded-lg object-cover shadow-md"
+            />
           </motion.div>
         </div>
 
