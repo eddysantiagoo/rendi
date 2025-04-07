@@ -1,18 +1,21 @@
 import { DetailedCardBank } from "./CardBank";
 
-export default async function BankPage({
-  params: rawParams,
-}: {
-  params: { slug: string };
-}) {
-  const { slug } = await rawParams;
+interface Params {
+  slug: string;
+}
 
+type Props = {
+  params: Promise<Params>;
+};
+
+export default async function BankPage({ params }: Props) {
+  const resolvedParams = await params;
   const normalizedSlug = decodeURIComponent(
-    slug.toLowerCase().replace(/-/g, " ")
+    resolvedParams.slug.toLowerCase().replace(/-/g, " ")
   );
 
   return (
-    <div className="relative flex flex-col items-center">
+    <div>
       <DetailedCardBank slug={normalizedSlug} />
     </div>
   );
