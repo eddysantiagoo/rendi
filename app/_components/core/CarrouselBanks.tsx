@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/carousel";
 import { Banks, DepositosBajoMonto } from "@/app/_DATA/Banks";
 import Image from "next/image";
+import Link from "next/link";
 
 export function CarouselBanks() {
   const combinedBanks = [...Banks, ...DepositosBajoMonto];
@@ -38,35 +39,38 @@ export function CarouselBanks() {
               className="w-full sm:basis-1/1 md:basis-1/1 lg:basis-1/3"
             >
               <Card className="transition-all hover:shadow-lg hover:scale-[1.03] duration-200">
-                <CardContent className="flex items-center justify-between p-4">
-                  <div className="flex gap-4 items-center">
-                    <Image
-                      src={bank.image}
-                      alt={bank.name}
-                      width={50}
-                      height={50}
-                      className="rounded-lg"
-                    />
-                    <div>
-                      <article className="flex items-center gap-2">
-                        <span className="text-xl font-semibold whitespace-nowrap truncate">
-                          {bank.name}
-                        </span>
-                        {"act" in bank && bank.act && (
-                          <span className="border border-[#00d983]  text-white text-xs font-semibold px-2 py-1 rounded-full">
-                            Tasa Actualizada
+                <Link href={`/bank/${bank.name.toLowerCase()}`}>
+                  <CardContent className="flex items-center justify-between p-4">
+                    <div className="flex gap-4 items-center">
+                      <Image
+                        src={bank.image}
+                        alt={bank.name}
+                        width={50}
+                        height={50}
+                        className="rounded-lg"
+                      />
+
+                      <div>
+                        <article className="flex items-center gap-2">
+                          <span className="text-xl font-semibold whitespace-nowrap truncate">
+                            {bank.name}
                           </span>
-                        )}
-                      </article>
-                      <p className="text-neutral-500 text-sm">
-                        {bank.type || "Cuenta de ahorros"}
-                      </p>
+                          {"act" in bank && bank.act && (
+                            <span className="border border-[#00d983]  text-white text-xs font-semibold px-2 py-1 rounded-full">
+                              Tasa Actualizada
+                            </span>
+                          )}
+                        </article>
+                        <p className="text-neutral-500 text-sm">
+                          {bank.type || "Cuenta de ahorros"}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                  <span className="text-4xl font-bold text-[#00d983]">
-                    {bank.tasaEA}%
-                  </span>
-                </CardContent>
+                    <span className="text-4xl font-bold text-[#00d983]">
+                      {bank.tasaEA}%
+                    </span>
+                  </CardContent>
+                </Link>
               </Card>
             </CarouselItem>
           ))}

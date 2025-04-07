@@ -106,37 +106,13 @@ export default function Home() {
     });
   };
 
-  // Función para calcular los datos de crecimiento de todos los bancos
-  // const calculateGrowthData = () => {
-  //   if (!amount || !months || amount <= 0 || months <= 0) return [];
-
-  //   const growthData = [];
-  //   const P = parseFloat(amount); // Monto inicial
-  //   const t = parseInt(months); // Número de meses
-
-  //   // Calcular los datos de crecimiento para cada banco
-  //   for (let month = 1; month <= t; month++) {
-  //     const dataPoint = { month }; // Almacenar el mes actual
-
-  //     // Calcular el valor final para cada banco
-  //     Banks.forEach((bank) => {
-  //       const EA = bank.tasaEA / 100; // Convertir tasa efectiva anual a decimal
-  //       const r = Math.pow(1 + EA, 1 / 12) - 1; // Tasa mensual
-  //       const A = P * Math.pow(1 + r, month); // Monto final para este mes
-  //       dataPoint[bank.name] = A; // Guardar el valor final del banco
-  //     });
-
-  //     growthData.push(dataPoint); // Añadir los datos del mes a la lista
-  //   }
-
-  //   return growthData;
-  // };
-
   const isFormFilled = amount && months;
 
   return (
     <div className="min-h-screen text-white flex flex-col items-center space-y-12">
       <Header />
+      <div className="absolute top-0 flex justify-center w-full">
+      </div>
       <div className="rounded-xl gap-4 grid place-items-center w-full text-center px-4">
         <article className="flex flex-col">
           <h1 className="w-fit rounded-lg text-[#00d992] text-3xl md:text-5xl font-bold">
