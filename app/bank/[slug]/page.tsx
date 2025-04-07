@@ -1,12 +1,11 @@
-import Image from "next/image";
 import { DetailedCardBank } from "./CardBank";
 
 export default async function BankPage({
-  params,
+  params: rawParams,
 }: {
   params: { slug: string };
 }) {
-  const { slug } = params;
+  const { slug } = await rawParams;
 
   const normalizedSlug = decodeURIComponent(
     slug.toLowerCase().replace(/-/g, " ")
