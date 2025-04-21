@@ -1,13 +1,13 @@
-import Navigation from "@/components/ui/navigation";
-import { Button, type ButtonProps } from "@/components/ui/button";
+import Navigation from "../../ui/navigation";
+import { Button, type ButtonProps } from "../../ui/button";
 import {
   Navbar as NavbarComponent,
   NavbarLeft,
   NavbarRight,
-} from "@/components/ui/navbar";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+} from "../../ui/navbar";
+import { Sheet, SheetContent, SheetTrigger } from "../../ui/sheet";
 import { Menu } from "lucide-react";
-
+import LaunchUI from "../../logos/launch-ui";
 import { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
@@ -26,7 +26,7 @@ interface NavbarActionProps {
 }
 
 interface NavbarProps {
-  logoSrc?: string;
+  logo?: ReactNode;
   name?: string;
   homeUrl?: string;
   mobileLinks?: NavbarLink[];
@@ -34,25 +34,22 @@ interface NavbarProps {
   showNavigation?: boolean;
   customNavigation?: ReactNode;
   className?: string;
-  logoAlt?: string;
-  logoClassName?: string;
 }
 
 export default function Navbar({
-  logoSrc = "/logo.png",
-  logoAlt = "Logo",
-  logoClassName = "h-8",
-  name = "rendi",
-  homeUrl = "/",
+  logo = <LaunchUI />,
+  name = "Launch UI",
+  homeUrl = "https://www.launchuicomponents.com/",
   mobileLinks = [
-    { text: "Gettinasg Started", href: "/" },
-    { text: "Components", href: "/" },
-    { text: "Documentation", href: "/" },
+    { text: "Getting Started", href: "https://www.launchuicomponents.com/" },
+    { text: "Components", href: "https://www.launchuicomponents.com/" },
+    { text: "Documentation", href: "https://www.launchuicomponents.com/" },
   ],
   actions = [
+    { text: "Sign in", href: "https://www.launchuicomponents.com/", isButton: false },
     {
       text: "Get Started",
-      href: "/",
+      href: "https://www.launchuicomponents.com/",
       isButton: true,
       variant: "default",
     },
@@ -71,7 +68,7 @@ export default function Navbar({
               href={homeUrl}
               className="flex items-center gap-2 text-xl font-bold"
             >
-              <img src={logoSrc} alt={logoAlt} className={logoClassName} />
+              {logo}
               {name}
             </a>
             {showNavigation && (customNavigation || <Navigation />)}
@@ -98,7 +95,7 @@ export default function Navbar({
                 >
                   {action.text}
                 </a>
-              )
+              ),
             )}
             <Sheet>
               <SheetTrigger asChild>

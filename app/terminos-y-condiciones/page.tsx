@@ -1,10 +1,10 @@
 import { Footer } from "../_components/core/Footer";
-import { Header } from "../_components/core/Header";
+import Navbar from "../_components/core/Header";
 
 export default function TermsPage() {
   return (
     <div className="min-h-screen text-white flex flex-col items-center space-y-12">
-      <Header />
+      <Navbar />
 
       <header className="w-full max-w-4xl text-center py-6 border-b border-gray-700">
         <h1 className="text-lg md:text-4xl font-bold">Términos y Condiciones</h1>

@@ -9,7 +9,7 @@ import CurrencyInput from "react-currency-input-field";
 import { Banks, DepositosBajoMonto } from "./_DATA/Banks";
 import { CarouselBanks } from "./_components/core/CarrouselBanks";
 import DialogEa from "./_components/core/DialogEa";
-import { Header } from "./_components/core/Header";
+import Navbar from "./_components/core/Header";
 import Image from "next/image";
 import { Label } from "@/components/ui/label";
 import {
@@ -43,10 +43,7 @@ export default function Home() {
       setLimit(false);
       setDisplayedBanks(
         isChecked
-          ? [
-              ...Banks,
-              ...DepositosBajoMonto.map(({ act, ...rest }) => rest),
-            ]
+          ? [...Banks, ...DepositosBajoMonto.map(({ act, ...rest }) => rest)]
           : Banks
       );
     }
@@ -117,9 +114,8 @@ export default function Home() {
 
   return (
     <div className="min-h-screen text-white flex flex-col items-center space-y-12">
-      <Header />
-      <div className="absolute top-0 flex justify-center w-full">
-      </div>
+      <Navbar />
+      <div className="absolute top-0 flex justify-center w-full"></div>
       <div className="rounded-xl gap-4 grid place-items-center w-full text-center px-4">
         <article className="flex flex-col">
           <h1 className="w-fit rounded-lg text-[#00d992] text-3xl md:text-5xl font-bold">
@@ -375,20 +371,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="p-6 px-28 w-full flex place-content-center">
-        <div className="relative flex flex-col md:flex-row items-center gap-6 p-4">
-          <div className="bg-[#0a0a0a] border-4relative bg-transparent">
-            <Image src="/eddy.png" alt="Character" width={80} height={150} />
-          </div>
 
-          <div
-            className={`${pixelFont.className} relative bg-[#fef4e8] text-black p-4 text-sm max-w-xs border-4 border-black pixel-border`}
-          >
-            "guarda tus monedas! 💰"
-            <div className="absolute -left-4 bottom-4 w-6 h-6 bg-[#fef4e8] border-black border-l-4 border-b-4"></div>
-          </div>
-        </div>
-      </section>
       <section className="p-6 md:px-28 w-full md:w-[70%]">
         <Faq />
       </section>
