@@ -7,7 +7,7 @@ export const Banks = [
   { name: "Banco Finandina", tasaEA: 10.50, image: "/finandina.webp", id: 9, type:"Cuenta Flexidigital+" },
   { name: "RappiPay", tasaEA: 9, image: "/rappi.jpg", id: 4, act: true },
   { name: "Bancamia", tasaEA: 10.5, image: "/bancamia.webp", id: 5, type:"Cuenta RentaPlus" },
-  { name: "Pibank", tasaEA: 10, image: "/pibank.webp", id: 8 },
+  { name: "Pibank", tasaEA: 9, image: "/pibank.webp", id: 8 }
 ];
   
 export const DepositosBajoMonto = [
