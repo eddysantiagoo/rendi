@@ -10,6 +10,7 @@ import { Menu } from "lucide-react";
 
 import { ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 interface NavbarLink {
   text: string;
@@ -67,13 +68,13 @@ export default function Navbar({
       <div className="max-w-container relative mx-auto flex items-center justify-between mt-4 px-4 bg-background/40 rounded-lg backdrop-blur-lg shadow-md border ">
         <NavbarComponent>
           <NavbarLeft>
-            <a
+            <Link
               href={homeUrl}
               className="flex items-center gap-2 text-xl font-bold"
             >
               <img src={logoSrc} alt={logoAlt} className={logoClassName} />
               {name}
-            </a>
+            </Link>
             {showNavigation && (customNavigation || <Navigation />)}
           </NavbarLeft>
           <NavbarRight>
@@ -84,20 +85,20 @@ export default function Navbar({
                   variant={action.variant || "default"}
                   asChild
                 >
-                  <a href={action.href}>
+                  <Link href={action.href}>
                     {action.icon}
                     {action.text}
                     {action.iconRight}
-                  </a>
+                  </Link>
                 </Button>
               ) : (
-                <a
+                <Link
                   key={index}
                   href={action.href}
                   className="hidden text-sm md:block"
                 >
                   {action.text}
-                </a>
+                </Link>
               )
             )}
             <Sheet>
@@ -113,20 +114,20 @@ export default function Navbar({
               </SheetTrigger>
               <SheetContent side="right">
                 <nav className="grid gap-6 text-lg font-medium">
-                  <a
+                  <Link
                     href={homeUrl}
                     className="flex items-center gap-2 text-xl font-bold"
                   >
                     <span>{name}</span>
-                  </a>
+                  </Link>
                   {mobileLinks.map((link, index) => (
-                    <a
+                    <Link
                       key={index}
                       href={link.href}
                       className="text-muted-foreground hover:text-foreground"
                     >
                       {link.text}
-                    </a>
+                    </Link>
                   ))}
                 </nav>
               </SheetContent>

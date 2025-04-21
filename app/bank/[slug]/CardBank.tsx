@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Banks, DepositosBajoMonto } from "../../_DATA/Banks";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 interface CardBankProps {
   slug: string;
@@ -15,7 +16,7 @@ export const DetailedCardBank = ({ slug }: CardBankProps) => {
   // Find the bank that matches the normalized slug
   const bank = allBanks.find((bank) => bank.name.toLowerCase() === slug);
 
-  // Rest of your code
+  const router = useRouter();
 
   // Add this check
   if (!bank) {
@@ -38,8 +39,9 @@ export const DetailedCardBank = ({ slug }: CardBankProps) => {
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <Link
-          href="/"
+        <button
+          type="button"
+          onClick={() => router.back()}
           className="flex items-center justify-center w-10 h-10 rounded-full bg-background/80 backdrop-blur-sm shadow-md border border-border hover:bg-background/90 transition-all"
         >
           <svg
@@ -56,7 +58,7 @@ export const DetailedCardBank = ({ slug }: CardBankProps) => {
               d="M15 19l-7-7 7-7"
             ></path>
           </svg>
-        </Link>
+        </button>
       </motion.div>
 
       <motion.div
@@ -167,7 +169,7 @@ export const DetailedCardBank = ({ slug }: CardBankProps) => {
               whileHover={{ backgroundColor: "rgba(var(--card), 0.8)" }}
               transition={{ duration: 0.2 }}
             >
-              <span className="text-muted-foreground">ID</span>
+              <span className="text-muted-foreground">ID Interno</span>
               <span className="font-medium text-foreground">{bank.id}</span>
             </motion.div>
             <div className="h-px bg-border"></div>
@@ -178,7 +180,7 @@ export const DetailedCardBank = ({ slug }: CardBankProps) => {
             >
               <span className="text-muted-foreground">Tipo de producto</span>
               <span className="font-medium text-foreground">
-                {bank.type || "Banco"}
+                {bank.type || "Sin definir"}
               </span>
             </motion.div>
           </motion.div>
@@ -194,31 +196,6 @@ export const DetailedCardBank = ({ slug }: CardBankProps) => {
             consulta.
           </motion.p>
 
-          {/* Call to action button - iOS style */}
-          <motion.button
-            className="w-full mt-6 bg-primary text-primary-foreground font-medium py-3 rounded-xl flex items-center justify-center hover:bg-primary/90 transition-colors"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 1 }}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            <span>Ver más información</span>
-            <svg
-              className="w-4 h-4 ml-1"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 5l7 7-7 7"
-              ></path>
-            </svg>
-          </motion.button>
         </motion.div>
       </motion.div>
     </div>
