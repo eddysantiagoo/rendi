@@ -45,9 +45,9 @@ export default function Navbar({
   name = "rendi",
   homeUrl = "/",
   mobileLinks = [
-    { text: "Gettinasg Started", href: "/" },
-    { text: "Components", href: "/" },
-    { text: "Documentation", href: "/" },
+    { text: "Inicio", href: "/" },
+    { text: "Bancos", href: "/" },
+    { text: "Terminos y condiciones", href: "/terminos-y-condiciones" },
   ],
   actions = [
     {
