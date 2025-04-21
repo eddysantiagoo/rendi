@@ -41,7 +41,14 @@ export default function Home() {
       setDisplayedBanks(Banks);
     } else {
       setLimit(false);
-      setDisplayedBanks(isChecked ? [...Banks, ...DepositosBajoMonto] : Banks);
+      setDisplayedBanks(
+        isChecked
+          ? [
+              ...Banks,
+              ...DepositosBajoMonto.map(({ act, ...rest }) => rest),
+            ]
+          : Banks
+      );
     }
   }, [amount, isChecked]);
 
