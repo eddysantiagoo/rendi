@@ -203,7 +203,6 @@ const CarouselPrevious = React.forwardRef<
 
   return (
     <Button
-      ref={ref}
       variant={variant}
       size={size}
       className={cn(
@@ -232,7 +231,6 @@ const CarouselNext = React.forwardRef<
 
   return (
     <Button
-      ref={ref}
       variant={variant}
       size={size}
       className={cn(
