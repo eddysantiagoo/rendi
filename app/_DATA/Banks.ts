@@ -11,6 +11,6 @@ export const Banks = [
 ];
   
 export const DepositosBajoMonto = [
-  { name: "Ualá", tasaEA: 12, image: "/uala.webp", type: "Deposito bajo monto", id: 6, act: true },
+  { name: "Ualá", tasaEA: 11, image: "/uala.webp", type: "Deposito bajo monto", id: 6, act: true },
   { name: "Nequi", tasaEA: 0.1, image: "/nequi.webp", type: "Deposito bajo monto", id: 7 },
 ];
