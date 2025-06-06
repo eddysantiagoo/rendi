@@ -56,7 +56,7 @@ export function CarouselBanks() {
                             {bank.name}
                           </span>
                           {"act" in bank && bank.act && (
-                            <span className="border border-[#00d983]  text-white text-xs font-semibold px-2 py-1 rounded-full">
+                            <span className="border text-nowrap max-w-[120px] text- overflow-ellipsis  border-[#00d983]  text-white text-xs font-semibold px-2 py-1 rounded-full">
                               Tasa Actualizada
                             </span>
                           )}
