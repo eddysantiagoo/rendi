@@ -139,6 +139,11 @@ export default function Home() {
         <DialogEa />
       </section>
 
+      <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-xs font-medium bg-[#00d992]/10 text-[#00d992]">
+        <span className="w-1 h-1 rounded-full bg-[#00d992]"></span>
+        Ultima actualización: 06/06/2025
+      </span>
+
       <section className="grid gap-2 md:gap-0 md:flex w-full px-2 xl:px-28">
         {/* Inputs */}
 
