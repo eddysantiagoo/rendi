@@ -70,7 +70,7 @@ export default function Navigation({
       title: "Ultima actualización",
       href: "/",
       description:
-        "La ultima actualización de tasas fue el 19/04/2025.",
+        "La ultima actualización de tasas fue el 06/06/2025.",
     },
     {
       title: "Reportes de tasas",
@@ -82,11 +82,11 @@ export default function Navigation({
   logo = <LaunchUI />,
   logoTitle = "rendi",
   logoDescription = "Haz rendir tu dinero :)",
-  logoHref = "https://www.launchuicomponents.com/",
+  logoHref = "/",
   introItems = [
     {
       title: "Calculadora de rendimientos",
-      href: "https://www.launchuicomponents.com/",
+      href: "/",
       description:
         "Encuentra la mejor tasa de interés para tu dinero y hazlo rendir.",
     },

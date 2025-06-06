@@ -16,13 +16,20 @@ export const Banks: Bank[] = [
     type: "Cuenta de ahorros",
     act: true,
   },
-  { name: "Bancolombia", type: "Cuenta de ahorros", tasaEA: 0.05, image: "/bancolombia.webp", id: 2 },
+  {
+    name: "Bancolombia",
+    type: "Cuenta de ahorros",
+    tasaEA: 0.05,
+    image: "/bancolombia.webp",
+    id: 2,
+  },
   {
     name: "Lulo Bank",
     tasaEA: 10.5,
-    type: "Cuenta de nomina",
+    type: "Cuenta Lulo Pro",
     image: "/lulo.webp",
     id: 3,
+    act: true,
   },
   {
     name: "Banco Finandina",
@@ -32,7 +39,13 @@ export const Banks: Bank[] = [
     type: "Cuenta Flexidigital+",
     act: true,
   },
-  { name: "RappiPay", type: "RappiCuenta", tasaEA: 9, image: "/rappi.jpg", id: 4 },
+  {
+    name: "RappiPay",
+    type: "RappiCuenta",
+    tasaEA: 9,
+    image: "/rappi.jpg",
+    id: 4,
+  },
   {
     name: "Bancamia",
     tasaEA: 10.5,
@@ -40,7 +53,14 @@ export const Banks: Bank[] = [
     id: 5,
     type: "Cuenta RentaPlus",
   },
-  { name: "Pibank", type: "Cuenta de ahorros", tasaEA: 12, image: "/pibank.webp", id: 8, act: true },
+  {
+    name: "Pibank",
+    type: "Cuenta de ahorros",
+    tasaEA: 12,
+    image: "/pibank.webp",
+    id: 8,
+    act: true,
+  },
 ];
 
 export const DepositosBajoMonto: Bank[] = [

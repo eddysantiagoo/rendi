@@ -55,15 +55,18 @@ export function CarouselBanks() {
                           <span className="text-xl font-semibold whitespace-nowrap truncate">
                             {bank.name}
                           </span>
-                          {"act" in bank && bank.act && (
-                            <span className="border text-nowrap max-w-[120px] text- overflow-ellipsis  border-[#00d983]  text-white text-xs font-semibold px-2 py-1 rounded-full">
-                              Tasa Actualizada
-                            </span>
-                          )}
                         </article>
-                        <p className="text-neutral-500 text-sm">
-                          {bank.type || "Cuenta de ahorros"}
-                        </p>
+                        <p className="text-neutral-500 text-sm">{bank.type}</p>
+
+                        {bank.act ? (
+                          <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-[#00d983]/10 text-[#00d983] dark:bg-[#00d983]/20 dark:text-[#00d983]">
+                            Tasa Actualizada
+                          </span>
+                        ) : (
+                          <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-zinc-800 :text-zinc-400">
+                            Tasa sin cambios
+                          </span>
+                        )}
                       </div>
                     </div>
                     <span className="text-4xl font-bold text-[#00d983]">
