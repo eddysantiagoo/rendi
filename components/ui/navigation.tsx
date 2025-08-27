@@ -70,7 +70,7 @@ export default function Navigation({
       title: "Ultima actualización",
       href: "/",
       description:
-        "La ultima actualización de tasas fue el 06/06/2025.",
+        "La ultima actualización de tasas fue el 27/08/2025.",
     },
     {
       title: "Reportes de tasas",

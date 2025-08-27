@@ -10,7 +10,7 @@ interface Bank {
 export const Banks: Bank[] = [
   {
     name: "Nubank",
-    tasaEA: 9.25,
+    tasaEA: 8.25,
     image: "/nubank.webp",
     id: 1,
     type: "Cuenta de ahorros",
@@ -25,7 +25,7 @@ export const Banks: Bank[] = [
   },
   {
     name: "Lulo Bank",
-    tasaEA: 10.5,
+    tasaEA: 10.15,
     type: "Cuenta Lulo Pro",
     image: "/lulo.webp",
     id: 3,
@@ -48,10 +48,11 @@ export const Banks: Bank[] = [
   },
   {
     name: "Bancamia",
-    tasaEA: 10.5,
+    tasaEA: 10,
     image: "/bancamia.webp",
     id: 5,
     type: "Cuenta RentaPlus",
+    act: true,
   },
   {
     name: "Pibank",
@@ -66,10 +67,11 @@ export const Banks: Bank[] = [
 export const DepositosBajoMonto: Bank[] = [
   {
     name: "Ualá",
-    tasaEA: 11,
+    tasaEA: 9.5,
     image: "/uala.webp",
     type: "Deposito bajo monto",
     id: 6,
+    act: true,
   },
   {
     name: "Nequi",
