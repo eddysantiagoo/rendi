@@ -14,6 +14,13 @@ export const Banks: Bank[] = [
     image: "/nubank.webp",
     id: 1,
     type: "Cuenta de ahorros",
+  },
+  {
+    name: "Bold",
+    type: "Cuenta de ahorros",
+    tasaEA: 10,
+    image: "/bold.webp",
+    id: 10,
     act: true,
   },
   {
@@ -25,7 +32,7 @@ export const Banks: Bank[] = [
   },
   {
     name: "Lulo Bank",
-    tasaEA: 10.15,
+    tasaEA: 9.50,
     type: "Cuenta Lulo Pro",
     image: "/lulo.webp",
     id: 3,
@@ -52,12 +59,11 @@ export const Banks: Bank[] = [
     image: "/bancamia.webp",
     id: 5,
     type: "Cuenta RentaPlus",
-    act: true,
   },
   {
     name: "Pibank",
     type: "Cuenta de ahorros",
-    tasaEA: 12,
+    tasaEA: 11,
     image: "/pibank.webp",
     id: 8,
     act: true,
@@ -67,7 +73,7 @@ export const Banks: Bank[] = [
 export const DepositosBajoMonto: Bank[] = [
   {
     name: "Ualá",
-    tasaEA: 9.5,
+    tasaEA: 5,
     image: "/uala.webp",
     type: "Deposito bajo monto",
     id: 6,
@@ -81,3 +87,5 @@ export const DepositosBajoMonto: Bank[] = [
     id: 7,
   },
 ];
+
+
