@@ -12,6 +12,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Zap } from "lucide-react";
 import { ProgressiveBlur } from "@/components/ui/progressive-blur";
+import { BankMedia } from "./BankMedia";
 
 interface CarouselCDTsProps {
   onSelectCDT: (rate: number, months: number) => void;
@@ -56,11 +57,9 @@ export function CarouselCDTs({ onSelectCDT }: CarouselCDTsProps) {
                   className="group relative block h-[160px] w-full rounded-2xl overflow-hidden border border-white/10 shadow-lg hover:shadow-xl hover:border-[#00d992]/40 transition-all duration-300"
                 >
                   {/* Hero image */}
-                  <Image
+                  <BankMedia
                     src={hero}
                     alt={item.bank.name}
-                    fill
-                    unoptimized
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                     sizes="300px"
                   />

@@ -11,6 +11,7 @@ import { Banks, DepositosBajoMonto } from "@/app/_DATA/Banks";
 import Image from "next/image";
 import Link from "next/link";
 import { calculateMonthlyNetRate } from "@/lib/finance-utils";
+import { BankMedia } from "./BankMedia";
 import { ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { ProgressiveBlur } from "@/components/ui/progressive-blur";
 
@@ -54,11 +55,9 @@ export function CarouselBanks() {
                   className="group relative block h-[430px] md:h-[460px] w-full rounded-3xl overflow-hidden border border-white/10 shadow-xl hover:shadow-2xl hover:border-[#00d992]/40 transition-all duration-300"
                 >
                   {/* Full-bleed hero image */}
-                  <Image
+                  <BankMedia
                     src={hero}
                     alt={bank.name}
-                    fill
-                    unoptimized
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                     sizes="280px"
                   />

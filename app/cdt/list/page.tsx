@@ -5,6 +5,7 @@ import { Banks } from "../../_DATA/Banks";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { posterSrc } from "@/lib/media-utils";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 
@@ -151,10 +152,10 @@ function CDTCard({ item, hero, slug, size, onCalculate }: CDTCardProps) {
       >
         {/* Imagen de fondo con blur medio */}
         <Image
-          src={hero}
+          src={posterSrc(hero)}
           alt={item.bank.name}
           fill
-          unoptimized
+          loading="lazy"
           className="object-cover scale-110 blur-sm opacity-20"
           sizes="80vw"
         />
@@ -206,10 +207,10 @@ function CDTCard({ item, hero, slug, size, onCalculate }: CDTCardProps) {
       >
         {/* Imagen de fondo con blur medio */}
         <Image
-          src={hero}
+          src={posterSrc(hero)}
           alt={item.bank.name}
           fill
-          unoptimized
+          loading="lazy"
           className="object-cover scale-110 blur-sm opacity-20"
           sizes="25vw"
         />

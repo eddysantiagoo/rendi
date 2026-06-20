@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { calculateMonthlyNetRate } from "@/lib/finance-utils";
+import { posterSrc, videoSrc } from "@/lib/media-utils";
 import { ArrowLeft, CheckCircle2, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import AutoScroll from "embla-carousel-auto-scroll";
@@ -83,7 +84,7 @@ export const DetailedCardBank = ({ slug }: CardBankProps) => {
         <div className="absolute inset-0">
           {heroImage ? (
             <Image
-              src={heroImage}
+              src={posterSrc(heroImage)}
               alt=""
               fill
               aria-hidden="true"
@@ -166,21 +167,38 @@ export const DetailedCardBank = ({ slug }: CardBankProps) => {
           </div>
           <div className="overflow-hidden rounded-2xl" ref={emblaRef}>
             <div className="flex gap-4">
-              {screenshots.map((src, i) => (
-                <div
-                  key={i}
-                  className="relative shrink-0 w-[320px] md:w-[380px] aspect-[16/10] rounded-2xl overflow-hidden border border-border shadow-lg bg-card"
-                >
-                  <Image
-                    src={src}
-                    alt={`${bank.name} captura ${i + 1}`}
-                    fill
-                    unoptimized
-                    className="object-cover"
-                    sizes="(min-width: 768px) 380px, 320px"
-                  />
-                </div>
-              ))}
+              {screenshots.map((src, i) => {
+                const video = videoSrc(src);
+                return (
+                  <div
+                    key={i}
+                    className="relative shrink-0 w-[320px] md:w-[380px] aspect-[16/10] rounded-2xl overflow-hidden border border-border shadow-lg bg-card"
+                  >
+                    {video ? (
+                      <video
+                        src={video}
+                        poster={posterSrc(src)}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        preload="none"
+                        aria-label={`${bank.name} captura ${i + 1}`}
+                        className="absolute inset-0 h-full w-full object-cover"
+                      />
+                    ) : (
+                      <Image
+                        src={src}
+                        alt={`${bank.name} captura ${i + 1}`}
+                        fill
+                        loading="lazy"
+                        className="object-cover"
+                        sizes="(min-width: 768px) 380px, 320px"
+                      />
+                    )}
+                  </div>
+                );
+              })}
             </div>
           </div>
         </motion.section>
