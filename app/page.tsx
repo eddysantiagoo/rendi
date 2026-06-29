@@ -168,7 +168,11 @@ export default function Home() {
       </div>
 
       <div className="place-content-center place-items-center w-full overflow-hidden">
-        <CarouselBanks />
+        {/* Carrusel oculto en móvil (temporal): los gifs/blur lo hacían lento.
+            En móvil se accede al listado completo por el enlace de abajo. */}
+        <div className="hidden md:block w-full">
+          <CarouselBanks />
+        </div>
 
         <div className="flex justify-center mt-4">
           <Link
