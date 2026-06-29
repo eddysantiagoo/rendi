@@ -1,31 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import { posterSrc, videoSrc } from "@/lib/media-utils";
+import { useIsDesktop } from "@/lib/use-is-desktop";
 import { cn } from "@/lib/utils";
-
-/**
- * Punto de corte para "móvil". En móvil NO montamos los <video> animados
- * (los GIFs/MP4) para acelerar la carga; mostramos solo el poster estático.
- */
-const MOBILE_QUERY = "(max-width: 767px)";
-
-/** `true` mientras el viewport sea de escritorio. Empieza en `false` para que
- * SSR y móvil rendericen el poster (carga rápida) y solo escritorio monte el video. */
-function useIsDesktop() {
-  const [isDesktop, setIsDesktop] = useState(false);
-
-  useEffect(() => {
-    const mql = window.matchMedia(MOBILE_QUERY);
-    const update = () => setIsDesktop(!mql.matches);
-    update();
-    mql.addEventListener("change", update);
-    return () => mql.removeEventListener("change", update);
-  }, []);
-
-  return isDesktop;
-}
 
 interface BankMediaProps {
   /** Ruta original del asset (puede ser un .gif, que se sirve como .mp4). */

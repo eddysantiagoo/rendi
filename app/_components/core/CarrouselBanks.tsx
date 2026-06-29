@@ -14,9 +14,11 @@ import { calculateMonthlyNetRate } from "@/lib/finance-utils";
 import { BankMedia } from "./BankMedia";
 import { ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { ProgressiveBlur } from "@/components/ui/progressive-blur";
+import { useIsDesktop } from "@/lib/use-is-desktop";
 
 export function CarouselBanks() {
   const combinedBanks = [...Banks, ...DepositosBajoMonto];
+  const isDesktop = useIsDesktop();
 
   return (
     <div className="relative mx-auto md:px-4 max-w-7xl overflow-hidden">
@@ -27,7 +29,9 @@ export function CarouselBanks() {
       <Carousel
         plugins={[
           AutoScroll({
-            active: true,
+            // En móvil lo apagamos: la animación continua repinta las capas
+            // con `backdrop-filter` cada frame y genera lag. Sigue deslizable a dedo.
+            active: isDesktop,
             speed: 0.8,
             stopOnMouseEnter:
               typeof window !== "undefined" && window.innerWidth >= 1024,
@@ -62,12 +66,16 @@ export function CarouselBanks() {
                     sizes="280px"
                   />
 
-                  {/* Progressive blur — image gradually loses sharpness toward the bottom */}
-                  <ProgressiveBlur
-                    position="bottom"
-                    height="55%"
-                    blurLevels={[0.5, 1, 2, 4, 8, 16, 32, 64]}
-                  />
+                  {/* Progressive blur — image gradually loses sharpness toward the bottom.
+                      Solo en escritorio: en móvil `backdrop-filter` (8 capas × N tarjetas
+                      durante el auto-scroll) provoca lag; el degradado oscuro de abajo basta. */}
+                  {isDesktop && (
+                    <ProgressiveBlur
+                      position="bottom"
+                      height="55%"
+                      blurLevels={[0.5, 1, 2, 4, 8, 16, 32, 64]}
+                    />
+                  )}
 
                   {/* Dark gradient on top of blur for text contrast */}
                   <div
