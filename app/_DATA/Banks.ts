@@ -40,7 +40,7 @@ export const Banks: Bank[] = [
   {
     name: "Bold",
     type: "Bolsillos de Ahorro",
-    tasaEA: 9,
+    tasaEA: 9.5,
     siteImages: [
       "/webs/bold/bold.gif",
       "/webs/bold.png",
