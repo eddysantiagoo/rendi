@@ -18,7 +18,7 @@ interface Bank {
 export const Banks: Bank[] = [
   {
     name: "Nubank",
-    tasaEA: 9.25,
+    tasaEA: 9.30,
     image: "/nubank.webp",
     id: 1,
     website: "https://nu.com.co/cf/cuenta/",
