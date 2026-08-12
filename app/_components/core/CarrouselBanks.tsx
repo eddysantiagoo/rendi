@@ -11,7 +11,7 @@ import { Banks, DepositosBajoMonto } from "@/app/_DATA/Banks";
 import Image from "next/image";
 import Link from "next/link";
 import { calculateMonthlyNetRate } from "@/lib/finance-utils";
-import { BankMedia } from "./BankMedia";
+import { posterSrc } from "@/lib/media-utils";
 import { ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { ProgressiveBlur } from "@/components/ui/progressive-blur";
 import { useIsDesktop } from "@/lib/use-is-desktop";
@@ -46,7 +46,13 @@ export function CarouselBanks() {
             const slug = encodeURIComponent(
               bank.name.toLowerCase().replace(/ /g, "-"),
             );
-            const hero = bank.siteImages?.[0] ?? bank.image;
+            // Nada de gifs/video en el home: preferimos la primera captura
+            // estática y, si solo hay gif, su poster.
+            const hero = posterSrc(
+              bank.siteImages?.find((src) => !src.toLowerCase().endsWith(".gif")) ??
+                bank.siteImages?.[0] ??
+                bank.image,
+            );
             const monthlyNet = calculateMonthlyNetRate(bank.tasaEA).toFixed(2);
 
             return (
@@ -58,12 +64,20 @@ export function CarouselBanks() {
                   href={`/bank/${slug}`}
                   className="group relative block h-[430px] md:h-[460px] w-full rounded-3xl overflow-hidden border border-white/10 shadow-xl hover:shadow-2xl hover:border-[#00d992]/40 transition-all duration-300"
                 >
-                  {/* Full-bleed hero image */}
-                  <BankMedia
+                  {/* Full-bleed hero image.
+                      `sizes` no es el ancho de la tarjeta (280px): con
+                      `object-cover` en un marco vertical solo se ve una franja
+                      central de una captura apaisada, así que el navegador
+                      necesita pedir un archivo ~3x más ancho para que esa
+                      franja se vea nítida en pantallas retina. */}
+                  <Image
                     src={hero}
                     alt={bank.name}
+                    fill
+                    loading="lazy"
+                    quality={85}
+                    sizes="540px"
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    sizes="280px"
                   />
 
                   {/* Progressive blur — image gradually loses sharpness toward the bottom.

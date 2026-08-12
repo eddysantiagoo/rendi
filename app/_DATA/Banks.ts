@@ -3,13 +3,28 @@ interface CDTOption {
   months: number;
 }
 
-interface Bank {
+/**
+ * Programa de beneficios de la entidad (Nu+, Lulo Pro, …) que sube la tasa
+ * mientras el usuario lo tenga activo. Es opcional y se aplica banco por banco:
+ * casi nadie tiene todos los programas al tiempo.
+ */
+export interface BankBoost {
+  /** Nombre comercial del programa, tal cual lo llama la entidad. */
+  name: string;
+  /** Tasa EA mientras el programa está activo. */
+  tasaEA: number;
+  /** Qué hay que cumplir para tenerlo, en una línea. */
+  requirement?: string;
+}
+
+export interface Bank {
   name: string;
   tasaEA: number;
   image: string;
   id: number;
   type?: string;
   act?: boolean;
+  boost?: BankBoost;
   cdtOptions?: CDTOption[];
   siteImages?: string[];
   website?: string;
@@ -29,6 +44,11 @@ export const Banks: Bank[] = [
       "/webs/nu2.jfif",
     ],
     type: "Cajita de ahorros",
+    boost: {
+      name: "Nu Plus",
+      tasaEA: 9.80,
+      requirement: "Con el programa Nu Plus activo",
+    },
     cdtOptions: [
       { rate: 9.50, months: 2 },
       { rate: 9.60, months: 3 },
@@ -40,7 +60,7 @@ export const Banks: Bank[] = [
   {
     name: "Bold",
     type: "Bolsillos de Ahorro",
-    tasaEA: 9.5,
+    tasaEA: 10,
     siteImages: [
       "/webs/bold/bold.gif",
       "/webs/bold.png",
@@ -65,8 +85,13 @@ export const Banks: Bank[] = [
   },
   {
     name: "Lulo Bank",
-    tasaEA: 9.25,
-    type: "Bolsillos Flex Lulo Pro",
+    tasaEA: 7.50,
+    type: "Bolsillos Flex",
+    boost: {
+      name: "Lulo Pro",
+      tasaEA: 9.25,
+      requirement: "Con el programa Lulo Pro activo",
+    },
     siteImages: [
       "/webs/lulo/lulo.gif",
       "/webs/lulo/lulo2.jpg",
@@ -166,8 +191,8 @@ export const DepositosBajoMonto: Bank[] = [
     image: "/nequi.webp",
     siteImages: [
       "/webs/nequi/nequi.gif",
-      "/webs/nequi/nequi2.jpg",
       "/webs/nequi/nequi.png",
+      "/webs/nequi/nequi2.jpg",
       "/webs/nequi/nequi3.png"
     ],
     type: "Deposito bajo monto",

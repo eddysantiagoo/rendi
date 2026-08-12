@@ -19,7 +19,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
-import { Info, TriangleAlert, Zap } from "lucide-react";
+import { Check, Info, TriangleAlert, Zap } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { Faq } from "./_components/core/Faq";
 import { Badge } from "@/components/ui/badge";
@@ -29,6 +29,7 @@ import DialogFormula from "./_components/core/DialogFormula";
 import {
   calculateMonthlyNetRate,
   calculateSavingsReturns,
+  effectiveTasaEA,
   formatCurrency,
 } from "@/lib/finance-utils";
 import { LAST_UPDATE } from "@/lib/last-update";
@@ -51,7 +52,17 @@ export default function Home() {
   const [limit, setLimit] = useState(false);
   const [chartData, setChartData] = useState<any[]>([]);
   const [comparisonData, setComparisonData] = useState<any[]>([]);
+  // Programas de beneficios activos (Nu+, Lulo Pro…), por nombre de banco.
+  // Van uno a uno porque casi nadie tiene todos al tiempo.
+  const [activeBoosts, setActiveBoosts] = useState<string[]>([]);
   const router = useRouter();
+
+  const toggleBoost = (bankName: string) =>
+    setActiveBoosts((prev) =>
+      prev.includes(bankName)
+        ? prev.filter((name) => name !== bankName)
+        : [...prev, bankName],
+    );
 
   useEffect(() => {
     if (parseFloat(amount) >= 10482689) {
@@ -75,10 +86,14 @@ export default function Home() {
     if (isNaN(P) || isNaN(t) || P <= 0 || t <= 0) return [];
 
     return displayedBanks.map((bank) => {
-      const results = calculateSavingsReturns(P, t, bank.tasaEA);
+      const boostActive = activeBoosts.includes(bank.name);
+      const rate = effectiveTasaEA(bank, boostActive);
+      const results = calculateSavingsReturns(P, t, rate);
 
       return {
         ...bank,
+        rate,
+        boostActive,
         deposit: formatCurrency(P),
         depositRaw: P,
         finalAmount: formatCurrency(results.finalAmount),
@@ -113,7 +128,7 @@ export default function Home() {
     const topBank = results[0]; // El mejor banco
     if (topBank) {
       for (let i = 0; i <= t; i++) {
-        const monthResults = calculateSavingsReturns(P, i, topBank.tasaEA);
+        const monthResults = calculateSavingsReturns(P, i, topBank.rate);
         growthData.push({
           month: `Mes ${i}`,
           balance: Math.round(monthResults.finalAmount),
@@ -128,7 +143,7 @@ export default function Home() {
       returns: bank.interestsRaw,
     }));
     setComparisonData(top5);
-  }, [amount, months, isChecked, displayedBanks]);
+  }, [amount, months, isChecked, displayedBanks, activeBoosts]);
 
   const isFormFilled = amount && months;
 
@@ -380,6 +395,28 @@ export default function Home() {
                             <p className="text-yellow-400/90 text-xs mt-0.5">
                               Tu dinero habrá crecido: {bank.interests}
                             </p>
+
+                            {bank.boost && (
+                              <button
+                                type="button"
+                                aria-pressed={bank.boostActive}
+                                title={`${bank.boost.requirement ?? bank.boost.name}: ${bank.boost.tasaEA}% EA`}
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  toggleBoost(bank.name);
+                                }}
+                                className={`mt-2 w-fit inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-1 text-xs font-medium transition-colors ${
+                                  bank.boostActive
+                                    ? "border-[#00d992]/40 bg-[#00d992]/10 text-[#00d992]"
+                                    : "border-border text-muted-foreground hover:text-foreground"
+                                }`}
+                              >
+                                {bank.boostActive && (
+                                  <Check size={12} className="shrink-0" />
+                                )}
+                                Tengo {bank.boost.name}
+                              </button>
+                            )}
                           </div>
                         </article>
 
@@ -392,19 +429,26 @@ export default function Home() {
                               type="button"
                               className="w-full inline-flex items-center justify-between gap-2 px-3 py-2 rounded-xl bg-[#00d992]/15 border border-[#00d992]/30 text-[#00d992] text-sm font-bold"
                             >
-                              <span>{bank.tasaEA}%</span>
+                              <span>{bank.rate}%</span>
                               <Info size={13} className="opacity-60 shrink-0" />
                             </button>
                             <div className="pointer-events-none absolute right-0 top-full z-10 mt-2 w-52 rounded-xl border border-border bg-background/95 backdrop-blur-md px-3 py-2.5 text-[11px] text-foreground opacity-0 shadow-lg transition-opacity group-hover:opacity-100">
                               <p className="text-[10px] uppercase tracking-wider text-muted-foreground mb-1">
-                                Tasa EA
+                                {bank.boostActive
+                                  ? `Tasa EA con ${bank.boost?.name}`
+                                  : "Tasa EA"}
                               </p>
                               <p>
                                 Neto mensual aprox:{" "}
                                 <span className="font-semibold text-[#8bf5cf]">
-                                  {calculateMonthlyNetRate(bank.tasaEA).toFixed(2)}%
+                                  {calculateMonthlyNetRate(bank.rate).toFixed(2)}%
                                 </span>
                               </p>
+                              {bank.boost && !bank.boostActive && (
+                                <p className="mt-1 text-muted-foreground">
+                                  Con {bank.boost.name}: {bank.boost.tasaEA}% EA
+                                </p>
+                              )}
                             </div>
                           </div>
 

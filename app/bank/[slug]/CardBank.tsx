@@ -136,6 +136,29 @@ export const DetailedCardBank = ({ slug }: CardBankProps) => {
         <StatItem label="Tipo" value={bank.type ?? "—"} />
       </motion.section>
 
+      {/* PROGRAMA DE BENEFICIOS (Nu+, Lulo Pro…) */}
+      {bank.boost && (
+        <motion.section
+          className="max-w-5xl mx-auto mt-4 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-border bg-card px-5 py-4"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.35 }}
+        >
+          <div className="flex flex-col">
+            <span className="text-sm font-semibold text-foreground">
+              {bank.boost.name}
+            </span>
+            <span className="text-xs text-muted-foreground">
+              {bank.boost.requirement ??
+                `Con ${bank.boost.name} activo la tasa sube`}
+            </span>
+          </div>
+          <span className="text-lg font-semibold text-[#00d992]">
+            {bank.boost.tasaEA}% EA
+          </span>
+        </motion.section>
+      )}
+
       {/* SCREENSHOTS — auto-scroll carousel */}
       {screenshots.length > 0 && (
         <motion.section

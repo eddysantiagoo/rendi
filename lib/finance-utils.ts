@@ -28,6 +28,15 @@ export const calculateRetention = (interests: number, type: AccountType): number
 };
 
 /**
+ * Tasa que realmente aplica a un banco: la del programa de beneficios
+ * (Nu+, Lulo Pro, …) si el usuario lo tiene activo, o la tasa base.
+ */
+export const effectiveTasaEA = (
+  bank: { tasaEA: number; boost?: { tasaEA: number } },
+  boostActive: boolean,
+): number => (boostActive && bank.boost ? bank.boost.tasaEA : bank.tasaEA);
+
+/**
  * Calculates returns for savings accounts (Compound interest calculation)
  */
 export const calculateSavingsReturns = (amount: number, months: number, tasaEA: number) => {
